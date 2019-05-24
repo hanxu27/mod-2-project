@@ -1,7 +1,8 @@
 # Volleyball Tryout Manger
 
-Allows players to signup and then register for tryouts.
-Allows coaches to evaluate players at tryouts and compare players across age group.
+Player Section: Allows players to signup and then register for tryouts.
+
+Coach Section: Allows coaches to evaluate players at tryouts and compare players across age group.
 Allows coaches to add selected players onto teams.
 
 # Datebase
@@ -11,20 +12,21 @@ Holds player contact information
 * Name
 * Birthday
 * Height
-* hand hitting
-* school
-* Position 1
-* Position 2
+* hand hitting :dropdown
+* School
+* Position 1 :dropdown
+* Position 2 :dropdown
 * Parent Name
 * Parent Number
 * Parent Address
 * Playing Experience (40 word max)
 * Additional Comments (50 word max)
 * Upload Headshot (bonus)
+* belongs_to team (optional)
 #### PreTryout
 * Tryout Number
-* Forms (bonus)
-* Paid
+* Forms completed :boolean
+* Paid :boolean
 * Forms completed
 * Age Group (dropdown)
 * Reach
@@ -34,15 +36,15 @@ Holds player contact information
 * 30 feet dash
 * belongs to a player
 #### EvalTryout
-* Coachability
-* Athleticism
-* Serve
-* Serve Receive
-* Passing
-* Setting
-* Hitting
-* Communication
-* Volleyball IQ
+* Coachability (1-10)
+* Athleticism (1-10)
+* Serve (1-10)
+* Serve Receive (1-10)
+* Passing (1-10)
+* Setting (1-10)
+* Hitting (1-10)
+* Communication (1-10)
+* Volleyball IQ (1-10)
 * Team (dropdown)
 * Comments (text area)
 #### Evaluate
