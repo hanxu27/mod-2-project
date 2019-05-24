@@ -21,7 +21,6 @@ Holds player contact information
 * Playing Experience (40 word max)
 * Additional Comments (50 word max)
 * Upload Headshot (bonus)
-* belongs to a team???
 #### PreTryout
 * Tryout Number
 * Forms (bonus)
@@ -61,4 +60,4 @@ Holds player contact information
 * shovel players into teams
 * make teams
 #### Teams
-* player in teams as array?
+* player in teams as array or as a join team
