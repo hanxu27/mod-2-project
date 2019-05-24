@@ -24,6 +24,7 @@ Holds player contact information
 * Upload Headshot (bonus)
 * belongs_to team (optional)
 #### PreTryout
+Signs player up for trying out
 * Tryout Number
 * Forms completed :boolean
 * Paid :boolean
@@ -36,6 +37,7 @@ Holds player contact information
 * 30 feet dash
 * belongs to a player
 #### EvalTryout
+Tracking player rating during tryouts
 * Coachability (1-10)
 * Athleticism (1-10)
 * Serve (1-10)
@@ -48,6 +50,7 @@ Holds player contact information
 * Team (dropdown)
 * Comments (text area)
 #### Evaluate
+Make evaluations and look up pretryout and player info
 * Make evalution
 * Only 1 evaluation between a player and evaluator
 * Look up a Player/PreTryout by number
@@ -55,11 +58,15 @@ Holds player contact information
 * List who I evaluated
 * Take off players that I have evaluated from list
 #### Decide
+Put players into team. Look at ratings, data analysis
 * order players by rating for each age group
 * compare players
 * look up player
 * put player onto team
 * shovel players into teams
+Admin functions
 * make teams
+* clear out teams
+* make new tryouts, inheret from PreTryout
 #### Teams
-* player in teams as array or as a join team
+* has many players
