@@ -23,7 +23,7 @@ Holds player contact information
 * Additional Comments (50 word max)
 * Upload Headshot (bonus)
 * belongs_to team (optional)
-#### PreTryout
+#### Tryout
 Signs player up for trying out
 * Tryout Number
 * Forms completed :boolean
@@ -36,7 +36,7 @@ Signs player up for trying out
 * 3 point touch
 * 30 feet dash
 * belongs to a player
-#### EvalTryout
+#### Evaluation
 Tracking player rating during tryouts
 * Coachability (1-10)
 * Athleticism (1-10)
@@ -49,7 +49,7 @@ Tracking player rating during tryouts
 * Volleyball IQ (1-10)
 * Team (dropdown)
 * Comments (text area)
-#### Evaluate
+#### Coach
 Make evaluations and look up pretryout and player info
 * Make evalution
 * Only 1 evaluation between a player and evaluator
@@ -57,7 +57,7 @@ Make evaluations and look up pretryout and player info
 * Add player name, age, all player within an age group to a waiting to evaluated list 
 * List who I evaluated
 * Take off players that I have evaluated from list
-#### Decide
+#### Decider
 Put players into team. Look at ratings, data analysis
 * order players by rating for each age group
 * compare players

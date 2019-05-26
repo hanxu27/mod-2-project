@@ -1,0 +1,2 @@
+class DecidersController < ApplicationController
+end

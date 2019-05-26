@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age_group: MyString
+  name: MyString
+  coach: one
+  player: one
+
+two:
+  age_group: MyString
+  name: MyString
+  coach: two
+  player: two
