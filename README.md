@@ -49,6 +49,7 @@ Tracking player rating during tryouts
 * Volleyball IQ (1-10)
 * Team (dropdown)
 * Comments (text area)
+* flag (for adding to 'favoriate list')
 #### Coach
 Make evaluations and look up pretryout and player info
 * Make evalution

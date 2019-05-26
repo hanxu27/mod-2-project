@@ -7,8 +7,8 @@ class CreateTryouts < ActiveRecord::Migration[5.2]
       t.integer :reach
       t.integer :approach_jump
       t.integer :block_jump
-      t.integer '3_point_touch'
-      t.integer '30_feet_dash'
+      t.float '3_point_touch'
+      t.float '30_feet_dash'
       t.references :player, foreign_key: true
 
       t.timestamps

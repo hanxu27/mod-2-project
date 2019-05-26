@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_033626) do
+ActiveRecord::Schema.define(version: 2019_05_26_151228) do
 
   create_table "coaches", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_033626) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "passing"
+    t.boolean "flag"
     t.index ["coach_id"], name: "index_evaluations_on_coach_id"
     t.index ["tryout_id"], name: "index_evaluations_on_tryout_id"
   end
@@ -71,7 +72,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_033626) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string "age_group"
+    t.integer "age_group"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,8 +85,8 @@ ActiveRecord::Schema.define(version: 2019_05_26_033626) do
     t.integer "reach"
     t.integer "approach_jump"
     t.integer "block_jump"
-    t.integer "3_point_touch"
-    t.integer "30_feet_dash"
+    t.float "3_point_touch"
+    t.float "30_feet_dash"
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -68,8 +68,8 @@ Player.all.each do |p|
   tryout[:reach] = p.height + 35
   tryout[:approach_jump] = tryout[:reach] + rand(30..60)
   tryout[:block_jump] = tryout[:approach_jump] - rand(10..20)
-  tryout['3_point_touch'] = rand(30..45)
-  tryout['30_feet_dash'] = rand(3..7)
+  tryout['3_point_touch'] = rand(30.0..45.0).round(2)
+  tryout['30_feet_dash'] = rand(3.2..7.5).round(2)
   tryout[:player_id] = p.id
   Tryout.create(tryout)
 end
@@ -145,5 +145,18 @@ end
   eval[:comments] = Faker::Movies::StarWars.quote
   eval[:tryout_id] = Tryout.all.sample.id
   eval[:coach_id] = Coach.all.sample.id
+  if rand(1..10) > 8
+    eval[:flag] = true
+  else
+    eval[:flag] = false
+  end
   Evaluation.create(eval)
+end
+
+4.times do
+  i = 14
+  while i <= 17 
+    Team.create(age_group: i, name: Faker::Games::Pokemon.name)
+    i += 1
+  end
 end
