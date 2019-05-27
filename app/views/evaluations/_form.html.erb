@@ -1,0 +1,34 @@
+<h1>Evaluation Form</h1>
+<% if @evaluation.errors %>
+  <ul>
+    <% @evaluation.errors.full_messages.each do |m| %>
+      <li style="color: red;"><%= m %> </li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for @evaluation do |f| %>
+  <h3><%= f.label "Individual Skills" %></h3>
+  <%= f.label "Passing" %>
+  <%= f.collection_radio_buttons :passing, [1..10], :itself, :itself  %>
+  <%= f.label "Serving" %>
+
+  <%= f.label "Hitting" %>
+
+  <%= f.label "Setting" %>
+
+  <%= f.label "SR" %>
+
+  <h3><%= f.label "Court Skills" %></h3>
+  <%= f.label "Communication" %>
+
+  <%= f.label "Coachability" %>
+
+  <%= f.label "Athleticism" %>
+
+  <%= f.label "Volleyball IQ" %>
+
+  <h3><%= f.label "Comments" %></h3>
+  <%= f.text_area :comments %> <br>
+  <%= f.submit "Save Evaluation"%>
+  
+<% end %>

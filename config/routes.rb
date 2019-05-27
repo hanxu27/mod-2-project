@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :teams
   resources :admins
-  resources :coaches
-  resources :evaluations
+  resources :coaches do
+    resources :evaluations
+  end
   resources :tryouts, except: [:index]
   resources :players
   delete '/tryouts/:id/cancel', to: 'tryouts#cancel', as: 'cancel_tryout'

@@ -1,0 +1,7 @@
+<h1>Start Evaluation</h1>
+
+<%= form_for [@coach, @evaluation] do |f| %>
+  <%= f.label "Enter Player Number:"%>
+  <%= f.text_field :tryout_id %>
+  <%= f.submit "Evaluate Player"%>
+<% end %>
