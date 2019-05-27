@@ -1,0 +1,10 @@
+<h1>New Tryout Form:</h1>
+<%= render 'errors' %>
+<%= form_for @tryout do |f| %>
+  <%= f.label "Select Age Group" %>
+  <%= f.select "age_group", [*10..18]%> <br>
+  <%= f.label "Enter Season: (2019)"%>
+  <%= f.text_field :season %> <br>
+  <%= hidden_field_tag "tryout[player_id]", params[:tryout][:player_id] %>
+  <%= f.submit "Sign Up!"%>
+<% end %>

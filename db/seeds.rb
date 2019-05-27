@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Decider.destroy_all
+Admin.destroy_all
 Team.destroy_all
 Player.destroy_all
 Coach.destroy_all
@@ -62,15 +62,16 @@ end
 #create tryout for the 50 players
 Player.all.each do |p|
   tryout = {}
-  tryout[:season] = '2019'
+  tryout[:season] = 2019
   tryout[:forms_completed] = Faker::Boolean
   tryout[:paid] = Faker::Boolean
   tryout[:reach] = p.height + 35
   tryout[:approach_jump] = tryout[:reach] + rand(30..60)
   tryout[:block_jump] = tryout[:approach_jump] - rand(10..20)
-  tryout['3_point_touch'] = rand(30.0..45.0).round(2)
-  tryout['30_feet_dash'] = rand(3.2..7.5).round(2)
+  tryout['point_touch'] = rand(30.0..45.0).round(2)
+  tryout['dash'] = rand(3.2..7.5).round(2)
   tryout[:player_id] = p.id
+  tryout[:age_group] = rand(14..17)
   Tryout.create(tryout)
 end
 #create another 20 players not going to tryout
@@ -127,7 +128,7 @@ end
 end
 # 3 admins
 3.times do
-  Decider.create(username: Faker::Movies::StarWars.droid, password: 'admin')
+  Admin.create(username: Faker::Movies::StarWars.droid, password: 'admin')
 end
 # 180 evals
 180.times do

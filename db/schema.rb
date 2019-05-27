@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_151228) do
+ActiveRecord::Schema.define(version: 2019_05_26_202952) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "coaches", force: :cascade do |t|
     t.string "name"
@@ -20,13 +27,6 @@ ActiveRecord::Schema.define(version: 2019_05_26_151228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_coaches_on_team_id"
-  end
-
-  create_table "deciders", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -79,17 +79,18 @@ ActiveRecord::Schema.define(version: 2019_05_26_151228) do
   end
 
   create_table "tryouts", force: :cascade do |t|
-    t.string "season"
+    t.integer "season"
     t.boolean "forms_completed"
     t.boolean "paid"
     t.integer "reach"
     t.integer "approach_jump"
     t.integer "block_jump"
-    t.float "3_point_touch"
-    t.float "30_feet_dash"
+    t.float "point_touch"
+    t.float "dash"
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "age_group"
     t.index ["player_id"], name: "index_tryouts_on_player_id"
   end
 

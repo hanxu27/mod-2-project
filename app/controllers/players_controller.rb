@@ -14,6 +14,8 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
+    @tryouts = @player.tryouts
+    @tryout = Tryout.new
   end
 
   def index
@@ -26,6 +28,7 @@ class PlayersController < ApplicationController
 
   def update
     @player = Player.find(params[:id])
+    binding.pry
     if @player.update(s_params)
       redirect_to player_path(@player)
     else

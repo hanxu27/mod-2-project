@@ -5,6 +5,17 @@
 <!--
  put in picture
 -->
+<h3>My Seasons: </h3>
+<ul>
+  <% @tryouts.each do |t| %>
+    <li><%= link_to t.season, tryout_path(t) %> </li>
+  <% end %>
+</ul>
+<%= form_tag new_tryout_path, method: :get do %>
+  <%= hidden_field_tag 'tryout[player_id]', @player.id %>
+  <%= submit_tag "Sign Up for Tryout"%>
+<% end %>
+
 <h3>My Info:</h3>
   <ul>
     <li>Hitting Hand: <%= @player.hand %> </li>

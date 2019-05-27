@@ -2,7 +2,7 @@
   <%= f.label "Birthday: yyyy-mm-dd"%>
   <% if @player.birthday.present? %>
       <%= f.text_field :birthday, value: @player.birthday.strftime('%Y-%m-%d') %>
-    else
+    <% else %>
       <%= f.text_field :birthday %>
    <% end %> <br>
   <%= f.label "Height in cm: (170)"%>

@@ -58,7 +58,7 @@ Make evaluations and look up pretryout and player info
 * Add player name, age, all player within an age group to a waiting to evaluated list 
 * List who I evaluated
 * Take off players that I have evaluated from list
-#### Decider
+#### Admin
 Put players into team. Look at ratings, data analysis
 * order players by rating for each age group
 * compare players
