@@ -16,6 +16,11 @@
   <%= f.text_field :point_touch %> <br>
   <%= f.label "30 ft Dash" %>
   <%= f.text_field :dash %> <br>
+  <h3><%= f.label "Corrections"%> </h3>
+  <%= f.label "Age Group: "%>
+  <%= f.select :age_group, Team.all.map {|t| t.age_group }.uniq %> <br>
+  <%= f.label "Season: "%>
+  <%= f.text_field :season %>
   <%= f.submit "Clear for Tryouts"%>
 <% end %>
 <%= link_to 'Back', tryout_path(@tryout) %>
