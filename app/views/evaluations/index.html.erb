@@ -4,3 +4,4 @@
     <li><%= link_to "#{e.tryout.age_group}: #{e.tryout.player.name}", coach_evaluation_path(@coach, e) %> </li>
   <% end %>
 </ul>
+<%= link_to 'Back', coach_path(@coach) %>

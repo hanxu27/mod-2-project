@@ -1,0 +1,23 @@
+<h1>Evaluation</h1>
+<h4>Player: <%= @eval.tryout.player.name %> </h4>
+<h4>Number: <%= @eval.tryout_id %> </h4>
+<h4>By Coach: <%= @eval.coach.name %> </h4>
+<h4>Total Score: <%= @total_score %></h4>
+<h4>Skill Score: <%= @skill_score %> </h4>
+<h4>Soft Skills Score: <%= @soft_score %> </h4>
+<h4>Recommended team: <%= @eval.team%></h4>
+<h4>Comments: <p><%= @eval.comments %></p> </h4>
+<h4>Specific Scores:</h4>
+<ul>
+  <li>Coachability: <%= @eval.coachability %> </li>
+  <li>Athleticism: <%= @eval.athleticism %> </li>
+  <li>Communication: <%= @eval.communication %> </li>
+  <li>Volleyball IQ: <%= @eval.vball_iq %> </li>
+  <li>Passing: <%= @eval.passing %> </li>
+  <li>Serve Receive: <%= @eval.sr %> </li>
+  <li>Hitting: <%= @eval.hitting %> </li>
+  <li>Setting: <%= @eval.setting %> </li>
+  <li>Serving: <%= @eval.serve %> </li>
+</ul>
+
+<%= link_to 'Back', coach_evaluations_path %>
