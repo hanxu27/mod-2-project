@@ -10,7 +10,7 @@ class Player < ApplicationRecord
   validate :validate_birthday, on: :update
   validates :height, numericality: { between: 120..220 }, on: :update
   validates :parent_name, format: { with: /\A[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*\z/, message: "format error" }, on: :update
-  validates :parent_number, format: { with: /\d{3}\D\d{3}\D\d{4}/, message: "check format"}, on: :update
+  # validates :parent_number, format: { with: /\d{3}\D\d{3}\D\d{4}/, message: "check format"}, on: :update
   validates :playing_experience, length: { maximum: 230, message: "too long" }, on: :update
   validates :additional_comments, length: { maximum: 270, message: "too long" }, on: :update
   

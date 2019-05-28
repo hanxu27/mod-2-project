@@ -1,0 +1,8 @@
+<h1>All Evaluations:</h1>
+<h2><%= "#{@tryout.id}. #{@tryout.player.name}" %></h2>
+<ul>
+  <% @evals.each do |e| %>
+    <li><%= link_to "#{e.total_score} from #{e.coach.name}", coach_evaluation_path(e.coach, e) %></li> <br>
+  <% end %>
+</ul>
+<%= link_to "Back to #{@evals.first.tryout.age_group}s", :back %>

@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_202952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+ 
   create_table "tryouts", force: :cascade do |t|
     t.integer "season"
     t.boolean "forms_completed"

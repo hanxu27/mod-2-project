@@ -47,6 +47,11 @@ class TryoutsController < ApplicationController
     redirect_to player_path(@player)
   end
 
+  def evaluations
+    @tryout = Tryout.find(params[:id])
+    @evals = @tryout.evaluations.sort_by{ |e| e.total_score }.reverse
+  end
+
   private
     def create_params
       params.require(:tryout).permit(:season, :age_group, :player_id)

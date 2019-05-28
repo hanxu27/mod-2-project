@@ -22,4 +22,5 @@
   <li>Serving: <%= @eval.serve %> </li>
 </ul>
 
-<%= link_to 'Back', coach_evaluations_path %>
+<%= link_to "All Evaluations by #{@eval.coach.name}", coach_evaluations_path(@eval.coach) %> <br>
+<%= link_to "All Evaluations for #{@eval.tryout.player.name}", tryout_evaluations_path(@eval.tryout) %>
