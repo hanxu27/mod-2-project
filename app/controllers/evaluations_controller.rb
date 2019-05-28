@@ -39,15 +39,34 @@ class EvaluationsController < ApplicationController
     # all evaluations belongs to a coach
     @coach = Coach.find(params[:coach_id])
     @evals = @coach.evaluations.sort_by{ |e| e.tryout.age_group}.reverse
-    @incomplete_evals = @evals.select{ |e| e.total_score == "incomplete" }
-    @flagged_evals = @evals.select{ |e| e.flag == true && e.total_score != "incomplete" }
+    @flagged_evals = @evals.select{ |e| e.flag == true }
+    @incomplete_evals = @evals.select{ |e| e.total_score == "incomplete" && e.flag == false }
     @completed_evals = @evals.select{ |e| e.total_score != "incomplete" && e.flag == false }
+
+    if params[:age_group]
+      tryouts = Tryout.all.select{ |t| t.age_group == params[:age_group].to_i }
+      tryouts.each do |t|
+        @evaluation = Evaluation.find_by(tryout_id: t.id, coach_id: params[:coach_id])
+        if !@evaluation.present?
+          @evaluation = Evaluation.create(tryout_id: t.id, coach_id: params[:coach_id])
+        end
+        @evaluation.update(flag: true)
+      end
+    end
   end
 
   def destroy
     @eval = Evaluation.find(params[:id])
     @coach = @eval.coach
     @eval.destroy
+    redirect_to coach_evaluations_path(@coach)
+  end
+
+  def delete_incomplete
+    @coach = Coach.find(params[:id])
+    if params[:incomplete] == "delete"
+      @coach.delete_incomplete
+    end
     redirect_to coach_evaluations_path(@coach)
   end
 

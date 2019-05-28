@@ -1,6 +1,18 @@
 <h1>Coach's Page</h1>
+
+<%= form_tag coach_evaluations_path(@coach), method: "delete" do %>
+  <%= hidden_field_tag :incomplete, "delete" %>
+  <%= submit_tag "Delete Incomplete Evaluations" %>
+<% end %>
+
 <%= link_to 'Make Evaluation', new_coach_evaluation_path(@coach) %> <br>
-<%= link_to 'My Evaluations', coach_evaluations_path(@coach) %>
+<%= link_to 'My Evaluations', coach_evaluations_path(@coach) %> <br>
+
+<%= form_tag coach_evaluations_path(@coach), method: "get" do %>
+  <%= collection_select(nil, :age_group, Team.all.map{|t| t.age_group}.uniq, :itself, :itself) %>
+  <%= submit_tag "Flag Entire Age Group" %>
+<% end %>
+
 <%= form_tag coach_path(@coach), method: "get" do %>
   <%= text_field_tag 'player' %>
   <%= submit_tag "Search For Player" %>
@@ -9,6 +21,11 @@
 <% if @tryouts %>
   <p>Search Result:</p>
   <% @tryouts.each do |t| %>
-    <%= link_to "#{t.id}: #{t.player.name}", tryout_path(t) %>
+    <%= link_to "#{t.id}: #{t.player.name}", tryout_path(t) %> 
+    <%= form_tag  coach_path(@coach), method: "get" do %>
+    <%= hidden_field_tag :flag, t.player_id %>
+    <%= submit_tag "Flag Player"%>
+    <% end %>
+    <br>
   <% end %>
 <% end %>

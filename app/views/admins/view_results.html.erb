@@ -1,7 +1,7 @@
 <h1>Tryout Scores for <%= @age_group %>s</h1>
 <ul>
   <% @tryouts.each do |t| %>
-  <li> <%= link_to  "#{t.total_score}: #{t.player.name}", tryout_evaluations_path(t) %></li>
+  <li><%= link_to  "#{t.total_score}: #{t.player.name}", tryout_evaluations_path(t) %></li>
   <% end %>
 </ul>
 <%= link_to 'Back', admin_path %>

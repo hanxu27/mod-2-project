@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get '/admins/:id/view_results', to: 'admins#view_results', as: 'view_results'
   get '/tryouts/:id/evaluations', to: 'tryouts#evaluations', as: 'tryout_evaluations'
   patch '/teams/:id/remove', to: 'teams#remove', as: 'team_remove'
+  delete "/coaches/:id/evaluations", to: 'evaluations#delete_incomplete', as: 'delete_incomplete_coach'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
