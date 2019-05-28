@@ -1,3 +1,14 @@
 <h1>Coach's Page</h1>
 <%= link_to 'Make Evaluation', new_coach_evaluation_path(@coach) %> <br>
 <%= link_to 'My Evaluations', coach_evaluations_path(@coach) %>
+<%= form_tag coach_path(@coach), method: "get" do %>
+  <%= text_field_tag 'player' %>
+  <%= submit_tag "Search For Player" %>
+<% end %>
+
+<% if @tryouts %>
+  <p>Search Result:</p>
+  <% @tryouts.each do |t| %>
+    <%= link_to "#{t.id}: #{t.player.name}", tryout_path(t) %>
+  <% end %>
+<% end %>
