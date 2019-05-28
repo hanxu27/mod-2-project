@@ -1,10 +1,12 @@
 <h1>Evaluation</h1>
+<%= link_to 'Edit', edit_coach_evaluation_path(@eval) %>
+<%= link_to 'Delete', coach_evaluation_path(@eval), method: :delete, data: {confirm: "Are you sure?"} %>
 <h4>Player: <%= @eval.tryout.player.name %> </h4>
 <h4>Number: <%= @eval.tryout_id %> </h4>
 <h4>By Coach: <%= @eval.coach.name %> </h4>
-<h4>Total Score: <%= @total_score %></h4>
-<h4>Skill Score: <%= @skill_score %> </h4>
-<h4>Soft Skills Score: <%= @soft_score %> </h4>
+<h4>Total Score: <%= @eval.total_score %></h4>
+<h4>Skill Score: <%= @eval.skill_score %> </h4>
+<h4>Soft Skills Score: <%= @eval.soft_score %> </h4>
 <h4>Recommended team: <%= @eval.team%></h4>
 <h4>Comments: <p><%= @eval.comments %></p> </h4>
 <h4>Specific Scores:</h4>

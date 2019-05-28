@@ -7,8 +7,7 @@ class EvaluationsController < ApplicationController
 
   def create
     # check for previous evaluations between the coach and player
-    @evaluation = Tryout.find(params[:evaluation][:tryout_id]).evaluations.find{ |e| e.coach_id == params[:coach_id]}
-    
+    @evaluation = Evaluation.find_by(tryout_id: params[:evaluation][:tryout_id], coach_id: params[:coach_id])
     if !@evaluation.present?
       @evaluation = Evaluation.new(tryout_id: params[:evaluation][:tryout_id], coach_id: params[:coach_id])
       if !@evaluation.save
@@ -34,37 +33,22 @@ class EvaluationsController < ApplicationController
 
   def show
     @eval = Evaluation.find(params[:id])
-    skill = [@eval[:serve], @eval[:sr], @eval[:setting], @eval[:hitting], @eval[:passing]]
-    soft = [@eval[:coachability], @eval[:athleticism], @eval[:communication], @eval[:vball_iq]]
-    
-    begin
-      @skill_score = skill.sum
-    rescue => exception
-      @skill_score = "incomplete"
-    end
-    begin
-      @soft_score = soft.sum
-    rescue => exception
-      @soft_score = "incomplete"
-    end
-
-    if @skill_score == "incomplete" || @soft_score == "incomplete" 
-      @total_score = "incomplete" 
-    else  
-      @total_score = @skill_score + @soft_score
-    end
   end
 
   def index
     # all evaluations belongs to a coach
     @coach = Coach.find(params[:coach_id])
     @evals = @coach.evaluations.sort_by{ |e| e.tryout.age_group}.reverse
+    @incomplete_evals = @evals.select{ |e| e.total_score == "incomplete" }
+    @flagged_evals = @evals.select{ |e| e.flag == true && e.total_score != "incomplete" }
+    @completed_evals = @evals.select{ |e| e.total_score != "incomplete" && e.flag == false }
   end
 
   def destroy
-    @coach = @eval.coach
     @eval = Evaluation.find(params[:id])
-    redirect_to coach_path(@coach)
+    @coach = @eval.coach
+    @eval.destroy
+    redirect_to coach_evaluations_path(@coach)
   end
 
   private
