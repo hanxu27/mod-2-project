@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  get 'signup', to: 'players#new'
+
+  get 'loginC', to: 'sessions#newC'
+  post 'loginC', to: 'sessions#createC'
+  
 
   delete '/tryouts/:id/cancel', to: 'tryouts#cancel', as: 'cancel_tryout'
   get '/tryouts/:id/cancel', to: redirect('/players/%{id}')

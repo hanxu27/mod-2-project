@@ -52,7 +52,7 @@ class CoachesController < ApplicationController
   end
   
   def create
-    @coach = Coach.new(c_params)
+    @coach = Coach.new(strong_params)
     if @coach.save
       redirect_to coach_path(@coach)
     else
@@ -93,6 +93,12 @@ class CoachesController < ApplicationController
   private
     def c_params
       params.require(:coach).permit(:name, :email, :password)
+    end
+    
+    def strong_params
+      strong_params = c_params
+      strong_params[:name] = c_params[:name].strip.titleize
+      strong_params
     end
 
     def u_params

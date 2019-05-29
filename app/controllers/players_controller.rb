@@ -4,6 +4,7 @@ class PlayersController < ApplicationController
   end
 
   def create
+    
     @player = Player.new(s_params)
     if @player.save
       redirect_to edit_player_path(@player)
