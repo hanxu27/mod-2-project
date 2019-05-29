@@ -1,0 +1,7 @@
+<% if @player.errors %>
+  <ul>
+    <% @player.errors.full_messages.each do |m| %>
+      <li style="color: red;"><%= m %> </li>
+    <% end %>
+  </ul>
+<% end %>

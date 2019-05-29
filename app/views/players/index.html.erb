@@ -1,0 +1,6 @@
+<h1>All Registered Players:</h1>
+<ul>
+  <% @players.each do |p| %>
+    <li><%= link_to p.name, player_path(p) %> </li>
+  <% end %>
+</ul>

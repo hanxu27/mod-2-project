@@ -1,0 +1,26 @@
+<h1>Player Check in:</h1>
+<%= form_for @tryout do |f| %>
+  <h3><%= f.label "Administrative:"%></h3>
+  <%= f.label "Player Completed Forms?"%>
+  <%= f.select :forms_completed, options_for_select([["yes", true], ["no", false]]) %> <br>
+  <%= f.label "Player Paid?"%>
+  <%= f.select :paid, options_for_select([["yes", true], ["no", false]]) %> <br>
+  <h3><%= f.label "Physical Tests:"%> </h3>
+  <%= f.label "Reach: cm" %>
+  <%= f.text_field :reach %> <br>
+  <%= f.label "Approach Jump: cm" %>
+  <%= f.text_field :approach_jump %> <br>
+  <%= f.label "Block Jump: cm" %>
+  <%= f.text_field :block_jump %> <br>
+  <%= f.label "3 Point Touch" %>
+  <%= f.text_field :point_touch %> <br>
+  <%= f.label "30 ft Dash" %>
+  <%= f.text_field :dash %> <br>
+  <h3><%= f.label "Corrections"%> </h3>
+  <%= f.label "Age Group: "%>
+  <%= f.select :age_group, Team.all.map {|t| t.age_group }.uniq %> <br>
+  <%= f.label "Season: "%>
+  <%= f.text_field :season %> <br>
+  <%= f.submit "Clear for Tryouts"%> <br>
+<% end %>
+<%= link_to 'Back', tryout_path(@tryout) %>

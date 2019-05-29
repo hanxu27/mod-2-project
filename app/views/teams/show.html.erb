@@ -1,0 +1,35 @@
+<h1><%= "#{@team.age_group}: #{@team.name}"%></h1>
+<%= link_to 'Edit', edit_team_path(@team) %> <br>
+
+<%= form_tag team_path(@team), {method: 'patch'} do %>
+<%= collection_select(:coach, :id, Coach.all, :id, :name, prompt: true)%>
+<%= submit_tag "Add Coach" %>
+<% end %>
+
+<%= form_tag team_path(@team), {method: 'patch'} do %>
+<%= collection_select(:tryout, :id, Tryout.all.select{ |t| t.age_group == @team.age_group }, :id, :id, prompt: true)%>
+<%= submit_tag "Add Player" %>
+<% end %>
+<h3>Coaches:</h3>
+  <ul>
+    <% @team.coaches.each do |c| %>
+      <li><%= c.name %> 
+        <%= form_tag team_remove_path, {method: 'patch'} do %>
+        <%= hidden_field_tag("coach_id", "#{c.id}") %>
+        <%= submit_tag "Remove" %>
+        <% end %> 
+      </li>
+    <% end %>
+  </ul>
+<h3>Players:</h3>
+  <ul>
+    <% @team.players.each do |p| %>
+      <li><%= p.name %> </li>
+        <%= form_tag team_remove_path, {method: 'patch'} do %>
+        <%= hidden_field_tag("player_id", "#{p.id}") %>
+        <%= submit_tag "Remove" %>
+        <% end %> 
+    <% end %>
+  </ul>
+
+  <%= link_to 'All Teams', teams_path %>

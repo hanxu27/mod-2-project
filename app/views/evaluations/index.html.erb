@@ -1,0 +1,21 @@
+<h1>Evaluations by coach <%= @coach.name %>: </h1>
+<%= link_to 'Make Evaluation', new_coach_evaluation_path(@coach) %> <br>
+<h2>Flagged:</h2>
+<ul>
+  <% @flagged_evals.each do |e| %>
+    <li><%= link_to "#{e.tryout.age_group}: #{e.tryout.player.name}", coach_evaluation_path(@coach, e) %> </li>
+  <% end %>
+</ul>
+<h2>Incomplete:</h2>
+<ul>
+  <% @incomplete_evals.each do |e| %>
+    <li><%= link_to "#{e.tryout.age_group}: #{e.tryout.player.name}", coach_evaluation_path(@coach, e) %> </li>
+  <% end %>
+</ul>
+<h2>Completed:</h2>
+<ul>
+  <% @completed_evals.each do |e| %>
+    <li><%= link_to "#{e.tryout.age_group}: #{e.tryout.player.name}", coach_evaluation_path(@coach, e) %> </li>
+  <% end %>
+</ul>
+<%= link_to 'Back', coach_path(@coach) %>

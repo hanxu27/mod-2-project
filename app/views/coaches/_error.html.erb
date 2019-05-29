@@ -1,0 +1,7 @@
+<% if @coach.errors %>
+  <ul>
+    <% @coach.errors.full_messages.each do |m| %>
+      <li style="color: red;"><%= m %> </li>
+    <% end %>
+  </ul>
+<% end %>
