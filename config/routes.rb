@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'pages#home'
+  resources :home
   resources :teams
   resources :coaches do
     resources :evaluations

@@ -1,0 +1,20 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+  
+
+
+
+.center{
+  text-align: center;
+  
+}
+
+.jumbotron .container h2 {
+  color: white;
+  position: relative;
+  bottom: 100px;
+  }
+
+.jumbotron .container button {
+    text-align: center;
+    }
