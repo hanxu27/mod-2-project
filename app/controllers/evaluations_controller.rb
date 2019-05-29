@@ -31,10 +31,6 @@ class EvaluationsController < ApplicationController
     end
   end
 
-  def show
-    @eval = Evaluation.find(params[:id])
-  end
-
   def index
     # all evaluations belongs to a coach
     @coach = Coach.find(params[:coach_id])
@@ -43,16 +39,6 @@ class EvaluationsController < ApplicationController
     @incomplete_evals = @evals.select{ |e| e.total_score == "incomplete" && e.flag == false }
     @completed_evals = @evals.select{ |e| e.total_score != "incomplete" && e.flag == false }
 
-    if params[:age_group]
-      tryouts = Tryout.all.select{ |t| t.age_group == params[:age_group].to_i }
-      tryouts.each do |t|
-        @evaluation = Evaluation.find_by(tryout_id: t.id, coach_id: params[:coach_id])
-        if !@evaluation.present?
-          @evaluation = Evaluation.create(tryout_id: t.id, coach_id: params[:coach_id])
-        end
-        @evaluation.update(flag: true)
-      end
-    end
   end
 
   def destroy
@@ -68,6 +54,31 @@ class EvaluationsController < ApplicationController
       @coach.delete_incomplete
     end
     redirect_to coach_evaluations_path(@coach)
+  end
+
+  def add_group
+    @coach = Coach.find(params[:id])
+    tryouts = Tryout.all.select{ |t| t.age_group == params[:age_group].to_i }
+    tryouts.each do |t|
+      @evaluation = Evaluation.find_by(tryout_id: t.id, coach_id: params[:id])
+      if !@evaluation.present?
+        @evaluation = Evaluation.create(tryout_id: t.id, coach_id: params[:id])
+      end
+      @evaluation.update(flag: true)
+    end
+    redirect_to coach_evaluations_path(@coach)
+  end
+
+  def unflag
+    @coach = Coach.find(params[:id])
+    evals = @coach.evaluations.select { |e| e.flag == true }
+    evals.each { |e| e.update(flag: false) }
+    
+    redirect_to coach_evaluations_path(@coach)
+  end
+
+  def show
+    @eval = Evaluation.find(params[:id])
   end
 
   private

@@ -10,19 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_202952) do
-
-  create_table "admins", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_05_26_014613) do
 
   create_table "coaches", force: :cascade do |t|
     t.string "name"
     t.string "username"
     t.string "password_digest"
+    t.boolean "admin"
     t.integer "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_202952) do
   create_table "evaluations", force: :cascade do |t|
     t.integer "coachability"
     t.integer "athleticism"
+    t.integer "passing"
     t.integer "serve"
     t.integer "sr"
     t.integer "setting"
@@ -40,12 +35,11 @@ ActiveRecord::Schema.define(version: 2019_05_26_202952) do
     t.integer "vball_iq"
     t.string "team"
     t.text "comments"
+    t.boolean "flag"
     t.integer "tryout_id"
     t.integer "coach_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "passing"
-    t.boolean "flag"
     t.index ["coach_id"], name: "index_evaluations_on_coach_id"
     t.index ["tryout_id"], name: "index_evaluations_on_tryout_id"
   end
@@ -58,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_202952) do
     t.string "school"
     t.string "parent_name"
     t.string "parent_number"
+    t.string "parent_address"
     t.string "position_1"
     t.string "position_2"
     t.text "playing_experience"
@@ -67,7 +62,6 @@ ActiveRecord::Schema.define(version: 2019_05_26_202952) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "parent_address"
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
@@ -77,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_202952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
- 
+
   create_table "tryouts", force: :cascade do |t|
     t.integer "season"
     t.boolean "forms_completed"
@@ -87,10 +81,10 @@ ActiveRecord::Schema.define(version: 2019_05_26_202952) do
     t.integer "block_jump"
     t.float "point_touch"
     t.float "dash"
+    t.integer "age_group"
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "age_group"
     t.index ["player_id"], name: "index_tryouts_on_player_id"
   end
 

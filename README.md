@@ -5,6 +5,13 @@ Player Section: Allows players to signup and then register for tryouts.
 Coach Section: Allows coaches to evaluate players at tryouts and compare players across age group.
 Allows coaches to add selected players onto teams.
 
+# Han's To Do:
+<!-- * post route for flagging group -->
+<!-- * combined coach and admin with admin tag -->
+* crud for coach
+<!-- * better seed data -->
+* permission
+
 # Datebase
 #### Classes
 #### Player

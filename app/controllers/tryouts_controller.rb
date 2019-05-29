@@ -49,7 +49,7 @@ class TryoutsController < ApplicationController
 
   def evaluations
     @tryout = Tryout.find(params[:id])
-    @evals = @tryout.evaluations.sort_by{ |e| e.total_score }.reverse
+    @evals = @tryout.evaluations
   end
 
   private

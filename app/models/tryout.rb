@@ -13,8 +13,10 @@ class Tryout < ApplicationRecord
 
   def skill_score
     score = 0
+    incomplete = self.evaluations.select { |e| e.total_score == "incomplete" }.count
+    total = self.evaluations.count - incomplete
     # avoid divided by 0
-    self.evaluations.count == 0 ? total = 1 : total = self.evaluations.count
+    total = 1 if total == 0
     self.evaluations.each do |e|
       e.skill_score == "incomplete" ? score : score += e.skill_score
     end
@@ -23,8 +25,9 @@ class Tryout < ApplicationRecord
 
   def soft_score
     score = 0
-    total = 0
-    self.evaluations.count == 0 ? total = 1 : total = self.evaluations.count
+    incomplete = self.evaluations.select { |e| e.total_score == "incomplete" }.count
+    total = self.evaluations.count - incomplete
+    total = 1 if total == 0
     self.evaluations.each do |e|
       e.soft_score == "incomplete" ? score : score += e.soft_score
     end

@@ -9,6 +9,7 @@ class CreateTryouts < ActiveRecord::Migration[5.2]
       t.integer :block_jump
       t.float 'point_touch'
       t.float 'dash'
+      t.integer :age_group
       t.references :player, foreign_key: true
 
       t.timestamps

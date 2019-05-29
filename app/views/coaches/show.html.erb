@@ -8,14 +8,22 @@
 <%= link_to 'Make Evaluation', new_coach_evaluation_path(@coach) %> <br>
 <%= link_to 'My Evaluations', coach_evaluations_path(@coach) %> <br>
 
-<%= form_tag coach_evaluations_path(@coach), method: "get" do %>
+<%= form_tag add_group_coach_path(@coach), method: "post" do %>
   <%= collection_select(nil, :age_group, Team.all.map{|t| t.age_group}.uniq, :itself, :itself) %>
   <%= submit_tag "Flag Entire Age Group" %>
 <% end %>
 
+<%= link_to 'Unflag All', unflag_coach_path, method: "post" %>
+
 <%= form_tag coach_path(@coach), method: "get" do %>
   <%= text_field_tag 'player' %>
   <%= submit_tag "Search For Player" %>
+<% end %>
+
+<%= form_tag(view_results_path, {method: "get"}) do %>
+  <label>View Age Group Results:</label><br>
+  <%= collection_radio_buttons(nil, :q, Team.all.map {|t| t.age_group }.uniq, :itself, :itself) %><br>
+  <%= submit_tag "View Result" %>
 <% end %>
 
 <% if @tryouts %>

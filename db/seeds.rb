@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.destroy_all
 Team.destroy_all
 Player.destroy_all
 Coach.destroy_all
@@ -124,11 +123,13 @@ end
   coach[:name] = Faker::Games::Dota.hero
   coach[:username] = Faker::Games::Dota.player
   coach[:password] = 'coach'
+  c1 = Faker::Number.between(1, 3)
+  if c1 == 1
+    coach[:admin] = true
+  else
+    coach[:admin] = false
+  end
   Coach.create(coach)
-end
-# 3 admins
-3.times do
-  Admin.create(username: Faker::Movies::StarWars.droid, password: 'admin')
 end
 # 180 evals
 180.times do

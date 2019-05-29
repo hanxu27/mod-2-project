@@ -8,7 +8,7 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.string :school
       t.string :parent_name
       t.string :parent_number
-      t.string :parent_adress
+      t.string :parent_address
       t.string :position_1
       t.string :position_2
       t.text :playing_experience

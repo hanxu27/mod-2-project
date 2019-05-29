@@ -3,6 +3,7 @@ class CreateEvaluations < ActiveRecord::Migration[5.2]
     create_table :evaluations do |t|
       t.integer :coachability
       t.integer :athleticism
+      t.integer :passing
       t.integer :serve
       t.integer :sr
       t.integer :setting
@@ -11,6 +12,7 @@ class CreateEvaluations < ActiveRecord::Migration[5.2]
       t.integer :vball_iq
       t.string :team
       t.text :comments
+      t.boolean :flag
       t.references :tryout, foreign_key: true
       t.references :coach, foreign_key: true
 

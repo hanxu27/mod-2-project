@@ -1,6 +1,0 @@
-<h1>Admin's Page</h1>
-<%= form_tag(view_results_path, {method: "get"}) do %>
-  <label>Select Age Group:</label><br>
-  <%= collection_radio_buttons(nil, :q, Team.all.map {|t| t.age_group }.uniq, :itself, :itself) %><br>
-  <%= submit_tag "View Result" %>
-<% end %>
