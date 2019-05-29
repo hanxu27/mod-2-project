@@ -1,0 +1,11 @@
+<h1>Edit Coach</h1>
+<%= render 'error' %>
+<%= form_for @coach do |f| %>
+  <%= f.label "name: "%>
+  <%= f.text_field :name %> <br>
+  <%= f.label "email: "%>
+  <%= f.text_field :email %> <br>
+  <%= f.label "data janitor "%>
+  <%= f.check_box :admin %> <br>
+  <%= f.submit 'Done!' %>
+<% end %>

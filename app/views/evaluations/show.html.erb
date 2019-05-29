@@ -1,0 +1,26 @@
+<h1>Evaluation</h1>
+<%= link_to 'Edit', edit_coach_evaluation_path(@eval) %>
+<%= link_to 'Delete', coach_evaluation_path(@eval), method: :delete, data: {confirm: "Are you sure?"} %>
+<h4>Player: <%= @eval.tryout.player.name %> </h4>
+<h4>Number: <%= @eval.tryout_id %> </h4>
+<h4>By Coach: <%= @eval.coach.name %> </h4>
+<h4>Total Score: <%= @eval.total_score %></h4>
+<h4>Skill Score: <%= @eval.skill_score %> </h4>
+<h4>Soft Skills Score: <%= @eval.soft_score %> </h4>
+<h4>Recommended team: <%= @eval.team%></h4>
+<h4>Comments: <p><%= @eval.comments %></p> </h4>
+<h4>Specific Scores:</h4>
+<ul>
+  <li>Coachability: <%= @eval.coachability %> </li>
+  <li>Athleticism: <%= @eval.athleticism %> </li>
+  <li>Communication: <%= @eval.communication %> </li>
+  <li>Volleyball IQ: <%= @eval.vball_iq %> </li>
+  <li>Passing: <%= @eval.passing %> </li>
+  <li>Serve Receive: <%= @eval.sr %> </li>
+  <li>Hitting: <%= @eval.hitting %> </li>
+  <li>Setting: <%= @eval.setting %> </li>
+  <li>Serving: <%= @eval.serve %> </li>
+</ul>
+
+<%= link_to "All Evaluations by #{@eval.coach.name}", coach_evaluations_path(@eval.coach) %> <br>
+<%= link_to "All Evaluations for #{@eval.tryout.player.name}", tryout_evaluations_path(@eval.tryout) %>

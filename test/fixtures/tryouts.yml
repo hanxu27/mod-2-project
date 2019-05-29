@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  season: MyString
+  forms_completed: false
+  paid: false
+  reach: 1
+  approach_jump: 1
+  block_jump: 1
+  3_point_touch: 1
+  30_feet_dash: 1
+  player: one
+
+two:
+  season: MyString
+  forms_completed: false
+  paid: false
+  reach: 1
+  approach_jump: 1
+  block_jump: 1
+  3_point_touch: 1
+  30_feet_dash: 1
+  player: two
