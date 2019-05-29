@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   post '/coaches/:id/evaluations/unflag', to: 'evaluations#unflag', as: 'unflag_coach'
   delete "/coaches/:id/tryouts", to: 'coaches#delete_tryouts', as: 'delete_tryouts'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ 
+ 
+
 end
+
