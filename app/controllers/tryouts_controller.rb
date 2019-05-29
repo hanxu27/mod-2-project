@@ -25,6 +25,10 @@ class TryoutsController < ApplicationController
     end
   end
 
+  def index
+    @tryouts = Tryout.all  
+  end
+
   def show
     @tryout = Tryout.find(params[:id])
   end

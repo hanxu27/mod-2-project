@@ -24,7 +24,7 @@ Evaluation.destroy_all
   end
   player[:school] = Faker::Movies::HarryPotter.house
   player[:parent_name] = Faker::Movies::HarryPotter.character
-  player[:parent_number] = Faker::PhoneNumber.phone_number
+  player[:parent_number] = Faker::Base.numerify('###-###-####')
   player[:parent_address] = Faker::Address.full_address
   p1 = Faker::Number.between(1, 15)
   p2 = Faker::Number.between(1, 15)
@@ -121,7 +121,7 @@ end
 7.times do
   coach = {}
   coach[:name] = Faker::Games::Dota.hero
-  coach[:username] = Faker::Games::Dota.player
+  coach[:email] = Faker::Internet.email
   coach[:password] = 'coach'
   c1 = Faker::Number.between(1, 3)
   if c1 == 1

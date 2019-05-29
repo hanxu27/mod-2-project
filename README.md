@@ -8,8 +8,9 @@ Allows coaches to add selected players onto teams.
 # Han's To Do:
 <!-- * post route for flagging group -->
 <!-- * combined coach and admin with admin tag -->
-* crud for coach
+<!-- * crud for coach -->
 <!-- * better seed data -->
+<!-- * delete tryout seasons -->
 * permission
 
 # Datebase

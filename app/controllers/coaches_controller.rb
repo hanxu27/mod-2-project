@@ -46,4 +46,56 @@ class CoachesController < ApplicationController
   def admin_show
     @age_groups = Team.all.map{ |t| t.age_group }
   end
+
+  def new
+    @coach = Coach.new
+  end
+  
+  def create
+    @coach = Coach.new(c_params)
+    if @coach.save
+      redirect_to coach_path(@coach)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @coach = Coach.find(params[:id])  
+  end
+
+  def update
+    @coach = Coach.find(params[:id])
+    if @coach.update(u_params)
+      redirect_to coach_path(@coach)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @coach = Coach.find(params[:id])
+    @evals = @coach.evaluations
+    @evals.destroy_all
+    @coach.destroy
+    redirect_to coaches_path
+  end
+
+  def delete_tryouts
+    tryouts = Tryout.all.select{ |t| t.season == params[:season].to_i }
+    tryouts.each do |t| 
+      t.evaluations.destroy_all
+      t.destroy
+    end
+    redirect_to tryouts_path 
+  end
+
+  private
+    def c_params
+      params.require(:coach).permit(:name, :email, :password)
+    end
+
+    def u_params
+      params.require(:coach).permit(:name, :email, :password, :admin)
+    end
 end

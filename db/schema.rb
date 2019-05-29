@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_014613) do
 
   create_table "coaches", force: :cascade do |t|
     t.string "name"
-    t.string "username"
+    t.string "email"
     t.string "password_digest"
     t.boolean "admin"
     t.integer "team_id"

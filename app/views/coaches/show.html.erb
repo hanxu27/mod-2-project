@@ -1,4 +1,5 @@
-<h1>Coach's Page</h1>
+<h1>Coach <%= @coach.name %></h1>
+<h2><%= @coach.email%></h2>
 
 <%= form_tag coach_evaluations_path(@coach), method: "delete" do %>
   <%= hidden_field_tag :incomplete, "delete" %>
@@ -9,7 +10,7 @@
 <%= link_to 'My Evaluations', coach_evaluations_path(@coach) %> <br>
 
 <%= form_tag add_group_coach_path(@coach), method: "post" do %>
-  <%= collection_select(nil, :age_group, Team.all.map{|t| t.age_group}.uniq, :itself, :itself) %>
+  <%= collection_select(nil, :age_group, Team.all.map{|t| t.age_group}.uniq, :itself, :itself, {prompt: "Age Group"} ) %>
   <%= submit_tag "Flag Entire Age Group" %>
 <% end %>
 
@@ -20,9 +21,14 @@
   <%= submit_tag "Search For Player" %>
 <% end %>
 
+<%= form_tag delete_tryouts_path(@coach), method: "delete", data: {confirm: "Are you sure?"} do %>
+  <%= text_field_tag :season %>
+  <%= submit_tag "Delete Season" %>
+<% end %>
+
 <%= form_tag(view_results_path, {method: "get"}) do %>
   <label>View Age Group Results:</label><br>
-  <%= collection_radio_buttons(nil, :q, Team.all.map {|t| t.age_group }.uniq, :itself, :itself) %><br>
+  <%= collection_radio_buttons(nil, :q, Team.all.map {|t| t.age_group }.uniq, :itself, :itself ) %><br>
   <%= submit_tag "View Result" %>
 <% end %>
 
