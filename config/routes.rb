@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   end
   resources :tryouts
   resources :players
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
   delete '/tryouts/:id/cancel', to: 'tryouts#cancel', as: 'cancel_tryout'
   get '/tryouts/:id/cancel', to: redirect('/players/%{id}')
   get '/coaches/:id/view_results', to: 'coaches#view_results', as: 'view_results'
