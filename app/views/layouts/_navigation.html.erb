@@ -18,12 +18,16 @@
         <a class="nav-link" href="#">About</a>
       </li>
 
+      <% unless session[:player_id] %>
+      <li class="nav-item ">
+        
       <% if session[:coach_id] %>
         <%= link_to 'Coaches', coaches_path, class: "nav-link" %>
       <% end %>
 
       <% unless session[:player_id] || session[:coach_id] %>
       <li class="nav-item">
+
         <a class="nav-link" href=<%=new_player_path%>>Sign Up</a>
       </li>
       <% end %>
@@ -44,9 +48,5 @@
         </li>
       <% end %>
   </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>

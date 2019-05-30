@@ -1,6 +1,11 @@
-<h1>Team List:</h1>
-<ul>
-  <% @teams.each do |t| %>
-    <li><%= link_to "#{t.age_group}: #{t.name}", team_path(t) %> </li>
-  <% end %>
-</ul>
+<div class="card text-white bg-warning mb-3 mx-auto" style="max-width: 35rem;">
+  <div class="card-header mx-auto"><h5><em><strong>Team List</strong></em></h5></div>
+  <div class="card-body">
+    <p class="card-text">
+    <% @teams.each do |t| %>
+      <li><h7><%= link_to "#{t.age_group}: #{t.name}", team_path(t) %></h7></li>
+    <% end %><br><br>
+    <a class="btn btn-secondary" href="<%=root_path%>" role="button">Back Home</a>
+    </p>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <br><br><br>
 <div class="card-columns">
 <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-  <div class="card-header"><%=@player.name%>'s Info</div>
+  <div class="card-header"><strong><%=@player.name%>'s Info</strong></div>
   <div class="card-body">
     <p class="card-text">
       <li>Hitting Hand: <%= @player.hand %> </li>
@@ -12,11 +12,15 @@
     <li>Height: <%= @player.height %> </li>
     <li>Primary Position: <%= @player.position_1 %> </li>
     <li>Secondary Position: <%= @player.position_2 %> </li>
+    </p><br><br><br><br>
+    <%= form_tag edit_player_path, method: :get do%>
+    <p><button type="submit"  class="btn btn-warning btn-sm btn-block">Update Information</button>
     </p>
+    <%end%>
   </div>
 </div>
 <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-  <div class="card-header">About <%=@player.name%></div>
+  <div class="card-header"><strong>About <%=@player.name%></strong></div>
   <div class="card-body">
     <p class="card-text">
     <%= @player.additional_comments %>
@@ -24,7 +28,7 @@
   </div>
 </div>
 <div class="card bg-warning mb-3" style="max-width: 20rem;">
-  <div class="card-header">Parent Contact</div>
+  <div class="card-header"><strong>Parent Contact</strong></div>
   <div class="card-body">
     <p class="card-text">
     <li>Name: <%= @player.parent_name %> </li>
@@ -34,7 +38,7 @@
   </div>
 </div>
 <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
-  <div class="card-header">Playing Experience</div>
+  <div class="card-header"><strong>Playing Experience</strong></div>
   <div class="card-body">
     <p class="card-text">
     <%= @player.playing_experience %>
@@ -42,16 +46,19 @@
   </div>
 </div>
 <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
-  <div class="card-header"><%=@player.name%>'s Tryout Seasons</div>
+  <div class="card-header"><strong><%=@player.name%>'s Tryout Seasons</strong></div>
   <div class="card-body">
     <p class="card-text">
     <% @tryouts.each do |t| %>
     <li><%= link_to t.season, tryout_path(t) %> </li>
     <% end %>
     <%= form_tag new_tryout_path, method: :get do%>
-    <%= hidden_field_tag 'tryout[player_id]', @player.id%>
-    <%= submit_tag "sign up for tryout"%>
+    <%= hidden_field_tag 'tryout[player_id]', @player.id%><br><br>
+    <footer>
+    <button type="submit" class="btn btn-primary btn-sm btn-block">Sign up for tryout</button>
+    </footer>
     <%end%>
+    
     </p>
   </div>
 </div>
