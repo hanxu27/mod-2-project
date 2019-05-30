@@ -10,13 +10,13 @@
         <a class="nav-link" href="#">About</a>
       </li>
 
-      <% unless session[:player_id] %>
+      <% unless session[:player_id] || session[:coach_id] %>
       <li class="nav-item">
         <a class="nav-link" href=<%=new_player_path%>>Sign Up</a>
       </li>
       <% end %>
 
-      <% if session[:player_id] %>
+      <% if session[:player_id] || session[:coach_id] %>
         <li class="nav-item">
           <%= link_to 'Logout', logout_path, method: "delete", class: "nav-link" %>
           
