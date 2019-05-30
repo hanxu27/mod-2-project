@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  resources :home
+  get 'about', to: 'pages#about'
   resources :teams
   resources :coaches do
     resources :evaluations
