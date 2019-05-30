@@ -1,5 +1,6 @@
 class TryoutsController < ApplicationController
   load_and_authorize_resource param_method: [:create_params, :update_params]
+  skip_load_resource only: [:new]
 
   def new
     @tryout = Tryout.new
@@ -45,7 +46,7 @@ class TryoutsController < ApplicationController
   def cancel
     @tryout = Tryout.find(params[:id])
     if @tryout.reach.present? || @tryout.evaluations.present?
-      @tryout.errors.messages['Error:'] << 'Tryout already started, cannot cancel tryout.'
+      flash.now[:danger] = 'Tryout already started, cannot cancel tryout.'
       return render :show
     end
     @player = @tryout.player

@@ -21,7 +21,7 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 45px, 0px);">
       <a class="dropdown-item" href="<%=edit_tryout_path(@tryout)%>">Clear for Tryouts</a>
-      <a class="dropdown-item" type="submit" href="<%=cancel_tryout_path(@tryout)%>">Cancel My Tryout</a>
+      <%= link_to("Cancel My Tryout", cancel_tryout_path(@tryout), method: :delete, class: "dropdown-item") %>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item"href="<%=player_path(@tryout.player)%>">Back to Player's Info</a>
     </div>

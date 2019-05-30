@@ -4,12 +4,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Team, public: true
+    can :read, Team
     if user.class == Player
       can :read, Team
       can :manage, Player, id: user.id
       cannot :index, Player
-      can [:create, :destroy], Tryout, id: user.id
+      can :manage, Tryout, player_id: user.id
+      cannot :index, Tryout
+      can :create, Tryout
+      can :new, Tryout
     end
     if user.class == Coach
       can :read, Team
