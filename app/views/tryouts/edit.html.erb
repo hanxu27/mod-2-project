@@ -1,4 +1,4 @@
-
+<%= render 'errors' %>
 <div class="card border-dark mb-3 mx-auto" style="max-width: 35rem;">
   <div class="card-header"><h3><strong>Player Check in:</h3></strong></div>
   <div class="card-body">
@@ -6,9 +6,9 @@
     <%= form_for @tryout do |f| %>
   <h3><em><%= f.label "Administrative"%></em></h3>
   <%= f.label "Player Completed Forms?"%>
-  <%= f.select :forms_completed, options_for_select([["yes", true], ["no", false]]) %> <br>
+  <%= f.collection_select :forms_completed, ["yes", "no"], :itself, :itself %> <br>
   <%= f.label "Player Paid?"%>
-  <%= f.select :paid, options_for_select([["yes", true], ["no", false]]) %> <br><hr>
+  <%= f.collection_select :paid, ["yes", "no"], :itself, :itself %> <br><hr>
   <h3><em><%= f.label "Physical Tests"%></em></h3>
   <%= f.label "Reach: cm" %>
   <%= f.text_field :reach %> <br>

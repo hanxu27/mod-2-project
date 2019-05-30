@@ -1,4 +1,6 @@
 class EvaluationsController < ApplicationController
+  load_and_authorize_resource param_method: :edit_params
+
   def new
     #input player number first
     @evaluation = Evaluation.new

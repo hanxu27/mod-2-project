@@ -35,10 +35,12 @@
   <button type="submit" class="btn btn-outline-primary btn-sm">Search For Player</button>
 <% end %><br>
 
-<%= form_tag delete_tryouts_path(@coach), method: "delete", data: {confirm: "Are you sure?"} do %>
-  <%= text_field_tag :season %>
-  <button type="submit" class="btn btn-outline-danger btn-sm">Delete Season</button>
-<% end %><br>
+<% if can? :destroy, Tryout %>
+  <%= form_tag delete_tryouts_path(@coach), method: "delete", data: {confirm: "Are you sure?"} do %>
+    <%= text_field_tag :season %>
+    <button type="submit" class="btn btn-outline-danger btn-sm">Delete Tryout Season</button>
+  <% end %><br>
+<% end %>
 
 <% if @tryouts %>
   <p><strong>Search Result:</strong></p>
