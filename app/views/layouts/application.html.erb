@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body style= "background-color:#E0EEEE;">
+</head>
+  
+<body style= "background-color:#E0EEEE;">
     <%= render 'layouts/navigation'%>
+    <br><br>
     <%= render 'layouts/messages'%>
-    <div class = "container">
-     <br>
+  <div class = "container">
       <%= yield %>
-    </div>
-
-  </body>
-   
+    <%= render 'layouts/footer'%>
+  </div>
+</body>   
 </html>
