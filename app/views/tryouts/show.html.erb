@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs mx-auto">
   <li class="nav-item">
     <a class="nav-link active" data-toggle="tab" href="#player">Player</a>
   </li>
@@ -21,36 +21,37 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 45px, 0px);">
       <a class="dropdown-item" href="<%=edit_tryout_path(@tryout)%>">Clear for Tryouts</a>
-      <a class="dropdown-item" href="#">Cancel My Tryout</a>
+      <a class="dropdown-item" type="submit" href="<%=cancel_tryout_path(@tryout)%>">Cancel My Tryout</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="<%=player_path(@tryout.player)%>">Back to Player's Info</a>
+      <a class="dropdown-item"href="<%=player_path(@tryout.player)%>">Back to Player's Info</a>
     </div>
   </li>
 </ul>
 <div id="myTabContent" class="tab-content">
   <div class="tab-pane fade active show" id="player">
-    <p><%= @tryout.player.name %></p>
+    <p><h4><strong><%= @tryout.player.name %></strong></h4></p>
   </div>
   <div class="tab-pane fade" id="player_info">
-    <p>
-    <li>Reach: <%= @tryout.reach.present? ? "#{@tryout.reach} cm" : "pending" %></li>
-  <li>Approach Jump: <%= @tryout.approach_jump.present? ? "#{@tryout.approach_jump} cm" : "pending" %></li>
-  <li>Block Jump: <%= @tryout.block_jump.present? ? "#{@tryout.block_jump} cm" : "pending" %> </li>
-  <li>3 Point Touch: <%= @tryout.point_touch.present? ? "#{@tryout.point_touch} seconds" : "pending" %> </li>
-  <li>30 Feet Dash: <%= @tryout.dash.present? ? "#{@tryout.dash} seconds" : "pending" %> </li>
-    </p>
+    <p><h4><strong>
+    <li>Reach: <em><%= @tryout.reach.present? ? "#{@tryout.reach} cm" : "pending" %></em></li>
+  <li>Approach Jump: <em> <%= @tryout.approach_jump.present? ? "#{@tryout.approach_jump} cm" : "pending" %></em></li>
+  <li>Block Jump: <em><%= @tryout.block_jump.present? ? "#{@tryout.block_jump} cm" : "pending" %></em> </li>
+  <li>3 Point Touch: <em><%= @tryout.point_touch.present? ? "#{@tryout.point_touch} seconds" : "pending" %></em> </li>
+  <li>30 Feet Dash:<em><%= @tryout.dash.present? ? "#{@tryout.dash} seconds" : "pending" %></em>
+  </li>
+    </h4></strong></p>
   </div>
   <div class="tab-pane fade" id="season">
-    <p><%= @tryout.season %></p>
+    <p><h4><strong><%= @tryout.season %></h4></strong></p>
   </div>
   <div class="tab-pane fade" id="age_group">
-    <p><%= @tryout.age_group %></p>
+    <p><h4><strong><%= @tryout.age_group %></h4></strong></p>
   </div>
   <div class="tab-pane fade" id="forms">
-    <p><%= @tryout.forms_completed ? "Completed" : "Not Compeleted" %></p>
+    <p><h4><strong><%= @tryout.forms_completed ? "Completed" : "Not Compeleted" %></h4></strong></p>
   </div>
   <div class="tab-pane fade" id="tryout_fees">
-    <p><%= @tryout.paid ? "Paid" : "Not Paid"%></p>
+    <p><h4><strong><%= @tryout.paid ? "Paid" : "Not Paid"%></h4></strong></p>
   </div>
   <div class="tab-pane fade" id="dropdown1">
     <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>

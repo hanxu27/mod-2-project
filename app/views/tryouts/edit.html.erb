@@ -1,11 +1,15 @@
-<h1>Player Check in:</h1>
-<%= form_for @tryout do |f| %>
-  <h3><%= f.label "Administrative:"%></h3>
+
+<div class="card border-dark mb-3 mx-auto" style="max-width: 35rem;">
+  <div class="card-header"><h3><strong>Player Check in:</h3></strong></div>
+  <div class="card-body">
+    <p class="card-text">
+    <%= form_for @tryout do |f| %>
+  <h3><em><%= f.label "Administrative"%></em></h3>
   <%= f.label "Player Completed Forms?"%>
   <%= f.select :forms_completed, options_for_select([["yes", true], ["no", false]]) %> <br>
   <%= f.label "Player Paid?"%>
-  <%= f.select :paid, options_for_select([["yes", true], ["no", false]]) %> <br>
-  <h3><%= f.label "Physical Tests:"%> </h3>
+  <%= f.select :paid, options_for_select([["yes", true], ["no", false]]) %> <br><hr>
+  <h3><em><%= f.label "Physical Tests"%></em></h3>
   <%= f.label "Reach: cm" %>
   <%= f.text_field :reach %> <br>
   <%= f.label "Approach Jump: cm" %>
@@ -15,12 +19,17 @@
   <%= f.label "3 Point Touch" %>
   <%= f.text_field :point_touch %> <br>
   <%= f.label "30 ft Dash" %>
-  <%= f.text_field :dash %> <br>
-  <h3><%= f.label "Corrections"%> </h3>
+  <%= f.text_field :dash %> <br><hr>
+  <h3><em><%= f.label "Corrections"%></em></h3>
   <%= f.label "Age Group: "%>
   <%= f.select :age_group, Team.all.map {|t| t.age_group }.uniq %> <br>
   <%= f.label "Season: "%>
-  <%= f.text_field :season %> <br>
-  <%= f.submit "Clear for Tryouts"%> <br>
+  <%= f.text_field :season %> <br><br>
+  <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="submit" class="btn btn-outline-danger">Clear for Tryouts</button>
+  <button type="link" href="<%=tryout_path(@tryout)%>" class="btn btn-outline-danger">Back</button>
+</div>
 <% end %>
-<%= link_to 'Back', tryout_path(@tryout) %>
+    </p>
+  </div>
+</div>

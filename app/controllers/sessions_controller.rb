@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
   
   def createC
     coach = Coach.find_by(name: params[:session][:name].titleize)
+    
     if coach && coach.authenticate(params[:session][:password])
       session[:coach_id] = coach.id
       flash[:success] = "You have successfully logged in"

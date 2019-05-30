@@ -1,45 +1,65 @@
-<h1>Coach <%= @coach.name %></h1>
-<h2><%= @coach.email%></h2>
-
-<%= form_tag coach_evaluations_path(@coach), method: "delete" do %>
-  <%= hidden_field_tag :incomplete, "delete" %>
-  <%= submit_tag "Delete Incomplete Evaluations" %>
-<% end %>
-
-<%= link_to 'Make Evaluation', new_coach_evaluation_path(@coach) %> <br>
-<%= link_to 'My Evaluations', coach_evaluations_path(@coach) %> <br>
+<div class="card border-danger mb-3 mx-auto" style="max-width: 35rem;">
+  <div class="card-header"><h4><strong><%=@coach.name%></strong></h4>
+    <em><%=@coach.email%></em>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+<p><div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+ <button type="button" class="btn btn-outline-info btn-sm">Evaluation</button>
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
+      <a class="dropdown-item" href="<%=new_coach_evaluation_path(@coach)%>">Make Evaluation</a>
+      <a class="dropdown-item" href="<%=coach_evaluations_path(@coach)%>">My Evaluations</a>
+    </div>
+  </div></p>
+</div></p>
 
 <%= form_tag add_group_coach_path(@coach), method: "post" do %>
   <%= collection_select(nil, :age_group, Team.all.map{|t| t.age_group}.uniq, :itself, :itself, {prompt: "Age Group"} ) %>
-  <%= submit_tag "Flag Entire Age Group" %>
+  <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="submit" class="btn btn-success btn-sm">Flag Entire Age Group</button>
+  <button type="submit" class="btn btn-warning btn-sm">Unflag All</button>
+  <%= form_tag coach_evaluations_path(@coach), method: "delete" do %>
+  <%= hidden_field_tag :incomplete, "delete" %>
+  <button type="submit" class="btn btn-danger btn-sm">Delete Incomplete</button>
+<% end %>
+  
+  </div>
 <% end %>
 
-<%= link_to 'Unflag All', unflag_coach_path, method: "post" %>
 
+ <hr>
 <%= form_tag coach_path(@coach), method: "get" do %>
   <%= text_field_tag 'player' %>
-  <%= submit_tag "Search For Player" %>
-<% end %>
+  <button type="submit" class="btn btn-outline-primary btn-sm">Search For Player</button>
+<% end %><br>
 
 <%= form_tag delete_tryouts_path(@coach), method: "delete", data: {confirm: "Are you sure?"} do %>
   <%= text_field_tag :season %>
-  <%= submit_tag "Delete Season" %>
-<% end %>
-
-<%= form_tag(view_results_path, {method: "get"}) do %>
-  <label>View Age Group Results:</label><br>
-  <%= collection_radio_buttons(nil, :q, Team.all.map {|t| t.age_group }.uniq, :itself, :itself ) %><br>
-  <%= submit_tag "View Result" %>
-<% end %>
+  <button type="submit" class="btn btn-outline-danger btn-sm">Delete Season</button>
+<% end %><br>
 
 <% if @tryouts %>
-  <p>Search Result:</p>
+  <p><strong>Search Result:</strong></p>
   <% @tryouts.each do |t| %>
     <%= link_to "#{t.id}: #{t.player.name}", tryout_path(t) %> 
     <%= form_tag  coach_path(@coach), method: "get" do %>
     <%= hidden_field_tag :flag, t.player_id %>
-    <%= submit_tag "Flag Player"%>
+    <button type="submit" class="btn btn-success btn-sm">Flag Player</button>
     <% end %>
     <br>
   <% end %>
 <% end %>
+
+<hr>
+
+<%= form_tag(view_results_path, {method: "get"}) do %>
+  <label><strong>View Age Group Results:</strong></label><br>
+  <%= collection_radio_buttons(nil, :q, Team.all.map {|t| t.age_group }.uniq, :itself, :itself ) %><br>
+  <button type="submit" class="btn btn-info btn-sm">View Result</button>
+<% end %>
+
+    </p>
+  </div>
+</div>
