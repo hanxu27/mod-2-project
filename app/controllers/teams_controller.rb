@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  load_and_authorize_resource param_method: :s_params
+  
   def new
     @team = Team.new
   end
@@ -30,8 +32,8 @@ class TeamsController < ApplicationController
       Coach.find(params[:coach][:id]).update(team_id: params[:id])
       return redirect_to team_path(params[:id])
     end
-    if params[:tryout]
-      player = Tryout.find(params[:tryout][:id]).player
+    if params[:player]
+      player = Player.find(params[:player][:id])
       player.update(team_id: params[:id])
       return redirect_to team_path(params[:id])
     end

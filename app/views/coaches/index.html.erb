@@ -1,10 +1,22 @@
 <h1>All Coaches</h1>
+<% if can? :new, @coaches %>
+  <%= link_to 'New Coach', new_coach_path %>
+<% end %>
 
-<%= link_to 'New Coach', new_coach_path %>
-<ul>
-  <% @coaches.each do |c| %>
-    <li><%= link_to c.name, coach_path(c) %>
-        <%= link_to 'Edit', edit_coach_path(c) %>
-        <%= link_to 'Delete', coach_path(c), method: "delete", data: {confirm: "Are you sure?"} %> </li>
-  <% end %>
-</ul>
+<% if can? :edit, @coaches %>
+  <ul>
+    <% @coaches.each do |c| %>
+      <li><%= link_to c.name, coach_path(c) %>
+          <%= link_to 'Edit', edit_coach_path(c) %>
+          <%= link_to 'Delete', coach_path(c), method: "delete", data: {confirm: "Are you sure?"} %> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul>
+    <% @coaches.each do |c| %>
+      <li> <%= c.name %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to "Back", :back %>

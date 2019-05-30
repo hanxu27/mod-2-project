@@ -1,17 +1,32 @@
+
   <div class="card border-danger mx-auto mb-3" style="max-width: 30rem;">
   <div class="card-header mx-auto"><h4><strong><%= "#{@team.age_group}: #{@team.name}"%></strong></h4></div>
   <div class="card-body">
     <p class="card-text">
     <%= form_tag team_path(@team), {method: 'patch'} do %>
+
+<h1><%= "#{@team.age_group}: #{@team.name}"%></h1>
+<%= link_to 'Edit Team Info', edit_team_path(@team) %> <br>
+
+<%= form_tag team_path(@team), {method: 'patch'} do %>
+
 <%= collection_select(:coach, :id, Coach.all, :id, :name, prompt: true)%>
 <button type="submit" class="btn btn-outline-success">Add Coach</button>
 <% end %>
 <br>
 <%= form_tag team_path(@team), {method: 'patch'} do %>
+
 <%= collection_select(:tryout, :id, Tryout.all.select{ |t| t.age_group == @team.age_group }, :id, :id, prompt: true)%>
 <button type="submit" class="btn btn-outline-success">Add Player</button>
 <% end %><br><hr><br>
 <h5><strong>Coaches:</strong></h5>
+
+<%= collection_select(:player, :id, Player.all.select{ |p| p.tryouts.last.age_group == @team.age_group }, :id, :name, prompt: true)%>
+<%= submit_tag "Add Player" %>
+<% end %>
+
+<h3>Coaches:</h3>
+
   <ul>
     <% @team.coaches.each do |c| %>
       <li><%= c.name %> 
