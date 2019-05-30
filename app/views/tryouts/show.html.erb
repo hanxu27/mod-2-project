@@ -1,18 +1,61 @@
-<h1>Tryout Information:</h1>
-<%= render 'errors' %>
-<h3>Player: <%= @tryout.player.name %></h3>
-<h3>Season: <%= @tryout.season %></h3>
-<h3>Age Group: <%= @tryout.age_group %></h3>
-<h3>Forms: <%= @tryout.forms_completed ? "Completed" : "Not Compeleted" %> </h3>
-<h3>Tryout Fees: <%= @tryout.paid ? "Paid" : "Not Paid"%> </h3>
-<h3>Player Info:</h3>
-<ul>
-  <li>Reach: <%= @tryout.reach.present? ? "#{@tryout.reach} cm" : "pending" %></li>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#player">Player</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#player_info">Player Info</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#season">Season</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " data-toggle="tab" href="#age_group">Age Group</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#forms">Forms</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#tryout_fees">Tryout Fees</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
+    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 45px, 0px);">
+      <a class="dropdown-item" href="<%=edit_tryout_path(@tryout)%>">Clear for Tryouts</a>
+      <a class="dropdown-item" href="#">Cancel My Tryout</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="<%=player_path(@tryout.player)%>">Back to Player's Info</a>
+    </div>
+  </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active show" id="player">
+    <p><%= @tryout.player.name %></p>
+  </div>
+  <div class="tab-pane fade" id="player_info">
+    <p>
+    <li>Reach: <%= @tryout.reach.present? ? "#{@tryout.reach} cm" : "pending" %></li>
   <li>Approach Jump: <%= @tryout.approach_jump.present? ? "#{@tryout.approach_jump} cm" : "pending" %></li>
   <li>Block Jump: <%= @tryout.block_jump.present? ? "#{@tryout.block_jump} cm" : "pending" %> </li>
   <li>3 Point Touch: <%= @tryout.point_touch.present? ? "#{@tryout.point_touch} seconds" : "pending" %> </li>
   <li>30 Feet Dash: <%= @tryout.dash.present? ? "#{@tryout.dash} seconds" : "pending" %> </li>
-</ul>
-<%= link_to "Clear for Tryouts", edit_tryout_path(@tryout) %> <br>
-<%= link_to "Cancel My Tryout", cancel_tryout_path(@tryout), method: :delete, data: {confirm: "Are you sure you want to cancel your tryout?" } %> <br>
-<%= link_to "Back to Player's Info", player_path(@tryout.player) %>
+    </p>
+  </div>
+  <div class="tab-pane fade" id="season">
+    <p><%= @tryout.season %></p>
+  </div>
+  <div class="tab-pane fade" id="age_group">
+    <p><%= @tryout.age_group %></p>
+  </div>
+  <div class="tab-pane fade" id="forms">
+    <p><%= @tryout.forms_completed ? "Completed" : "Not Compeleted" %></p>
+  </div>
+  <div class="tab-pane fade" id="tryout_fees">
+    <p><%= @tryout.paid ? "Paid" : "Not Paid"%></p>
+  </div>
+  <div class="tab-pane fade" id="dropdown1">
+    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+  </div>
+  <div class="tab-pane fade" id="dropdown2">
+    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+  </div>
+</div>

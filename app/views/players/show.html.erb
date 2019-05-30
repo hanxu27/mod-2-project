@@ -1,24 +1,10 @@
-<H1>Player's Page</H1>
-<%= link_to 'Edit Profile', edit_player_path(@player) %>
-<%= link_to('Delete Profile', player_path(@player), method: :delete, data: {confirm: "This will delete your registration. Are you sure?"}) %>
-<h3>Player: <%=@player.name%></h3>
-<!--
- put in picture
--->
-<h3>My Tryout Seasons: </h3>
-<ul>
-  <% @tryouts.each do |t| %>
-    <li><%= link_to t.season, tryout_path(t) %> </li>
-  <% end %>
-</ul>
-<%= form_tag new_tryout_path, method: :get do %>
-  <%= hidden_field_tag 'tryout[player_id]', @player.id %>
-  <%= submit_tag "Sign Up for Tryout"%>
-<% end %>
-
-<h3>My Info:</h3>
-  <ul>
-    <li>Hitting Hand: <%= @player.hand %> </li>
+<br><br><br>
+<div class="card-columns">
+<div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+  <div class="card-header"><%=@player.name%>'s Info</div>
+  <div class="card-body">
+    <p class="card-text">
+      <li>Hitting Hand: <%= @player.hand %> </li>
     <li>Birthday: <%= if @player.birthday.present?
                         @player.birthday.strftime('%Y-%m-%d') 
                       end %> </li>
@@ -26,15 +12,43 @@
     <li>Height: <%= @player.height %> </li>
     <li>Primary Position: <%= @player.position_1 %> </li>
     <li>Secondary Position: <%= @player.position_2 %> </li>
-  </ul>
-<h3>Parent Contact:</h3>
-  <ul>
+    </p>
+  </div>
+</div>
+<div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+  <div class="card-header">About <%=@player.name%></div>
+  <div class="card-body">
+    <p class="card-text">
+    <%= @player.additional_comments %>
+    </p>
+  </div>
+</div>
+<div class="card bg-warning mb-3" style="max-width: 20rem;">
+  <div class="card-header">Parent Contact</div>
+  <div class="card-body">
+    <p class="card-text">
     <li>Name: <%= @player.parent_name %> </li>
     <li>Cell: <%= @player.parent_number %> </li>
     <li>Address: <%= @player.parent_address %> </li>
-  </ul>
-<h3>My Playing Experience: </h3>
-<p> <%= @player.playing_experience %> </p>
-<h3>About Me: </h3>
-<p> <%= @player.additional_comments %> </p>
-
+    </p>
+  </div>
+</div>
+<div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+  <div class="card-header">Playing Experience</div>
+  <div class="card-body">
+    <p class="card-text">
+    <%= @player.playing_experience %>
+    </p>
+  </div>
+</div>
+<div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+  <div class="card-header"><%=@player.name%>'s Tryout Seasons</div>
+  <div class="card-body">
+    <p class="card-text">
+    <% @tryouts.each do |t| %>
+    <li><%= link_to t.season, tryout_path(t) %> </li>
+    <% end %>
+    </p>
+  </div>
+</div>
+</div>
