@@ -32,6 +32,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete :coach_id
+    session.delete :player_id
+    redirect_to root_path
   end
 
 
