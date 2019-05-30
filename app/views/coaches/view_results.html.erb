@@ -1,7 +1,13 @@
-<h1>Tryout Scores for <%= @age_group %>s</h1>
-<ul>
-  <% @tryouts.each do |t| %>
-  <li><%= link_to  "#{t.total_score}: #{t.player.name}", tryout_evaluations_path(t) %></li>
-  <% end %>
-</ul>
-<%= link_to 'Back', coach_path %>
+<div class="card text-white bg-warning mb-3" style="max-width: 35rem;">
+  <div class="card-header"><h4><strong><em>Tryout Scores for <%= @age_group %>s</em></strong></h4></div>
+  <div class="card-body">
+    <p class="card-text">
+    <% @tryouts.each do |t| %>
+      <li><%= link_to  "#{t.total_score}: #{t.player.name}", tryout_evaluations_path(t) %></li>
+    <% end %>
+    </p>
+    <p>
+    <a class="btn btn-danger" href="<%=coach_path%>" role="button">Back</a>    
+    </p>
+  </div>
+</div>

@@ -1,31 +1,51 @@
+<div class="card-deck">
 <%= form_for @player do |f| %>
-  <%= f.label "Birthday: yyyy-mm-dd"%>
+  <div class="card border-warning mb-3 mx-auto" style="max-width: 40rem;">
+    <div class="card-body">
+      <p class="card-text">
+      <%= f.label "Birthday: yyyy-mm-dd"%>
   <% if @player.birthday.present? %>
       <%= f.text_field :birthday, value: @player.birthday.strftime('%Y-%m-%d') %>
     <% else %>
       <%= f.text_field :birthday %>
    <% end %> <br>
-  <%= f.label "Height in cm: (170)"%>
-  <%= f.text_field :height %> <br>
-  <%= f.label "Hitting Hand: "%>
-  <%= f.select :hand, ["right", "left"] %> <br>
-  <%= f.label "School Name: "%>
-  <%= f.text_field :school %> <br>
-  <%= f.label "Primary Position: "%>
-  <%= f.select :position_1, ["OH", "RS", "MB", "DS", "S"] %> <br>
-  <%= f.label "Secondary Position: "%>
-  <%= f.select :position_1, ["OH", "RS", "MB", "DS", "S"] %> <br>
-  <%= f.label "Parent Name: "%>
-  <%= f.text_field :parent_name %> <br>
-  <%= f.label "Parent Number: (111-222-3333)" %>
-  <%= f.text_field :parent_number %> <br>
-  <%= f.label "Parent Address: "%> <br>
-  <%= f.text_area :parent_address %> <br>
-  <%= f.label "Playing Experience: (40 word max)"%> <br>
-  <%= f.text_area :playing_experience %> <br>
-  <%= f.label "Additional Comments: (50 word max)"%> <br>
-  <%= f.text_area :additional_comments %> <br>
-  <%= f.label "Upload headshot: "%> <br>
-  <%= f.text_field :img_path %> <br>
-  <%= f.submit 'Done!' %>
-<% end %>
+    <%= f.label "Height in cm: (170)"%>
+    <%= f.text_field :height %> <br>
+    <%= f.label "Hitting Hand: "%>
+    <%= f.select :hand, ["right", "left"] %> <br>
+    <%= f.label "School Name: "%>
+    <%= f.text_field :school %> <br>
+    <%= f.label "Primary Position: "%>
+    <%= f.select :position_1, ["OH", "RS", "MB", "DS", "S"] %> <br>
+    <%= f.label "Secondary Position: "%>
+    <%= f.select :position_1, ["OH", "RS", "MB", "DS", "S"] %> <br>
+      </p>
+    </div>
+  </div>
+  <div class="card border-warning mb-3 mx-auto" style="max-width: 35rem;">
+    <div class="card-body">
+      <p class="card-text">
+      <%= f.label "Parent Name: "%>
+      <%= f.text_field :parent_name %> <br>
+      <%= f.label "Parent Number: (111-222-3333)" %>
+      <%= f.text_field :parent_number %> <br>
+      <%= f.label "Parent Address: "%> <br>
+      <%= f.text_area :parent_address %> <br>
+      </p>
+    </div>
+  </div>
+  <div class="card border-warning mb-3 mx-auto" style="max-width: 35rem;">
+    <div class="card-body">
+      <p class="card-text">
+      </p>
+      <%= f.label "Playing Experience: (40 word max)"%> <br>
+      <%= f.text_area :playing_experience %> <br>
+      <%= f.label "Additional Comments: (50 word max)"%> <br>
+      <%= f.text_area :additional_comments %> <br>
+      <%= f.label "Upload headshot: "%> <br>
+      <%= f.text_field :img_path %> <br>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-outline-success mx-auto">Update</button>
+  <% end %>
+</div>

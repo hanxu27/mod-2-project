@@ -1,5 +1,9 @@
-<h1 align="center">Player Log In</h1>
-<div class='row'>
+
+<div class="card text-white bg-dark mb-3 mx-auto" style="max-width: 20rem;">
+  <div class="card-header mx-auto"><h4><strong>Player Log In</strong></h4></div><br><br>
+  <div class="card-body">
+    <p class="card-text">
+       <div class="row mx-auto">
     <div class='col-xs-12'>
         <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
             <div class="form-group">
@@ -9,7 +13,7 @@
                 <div class ="col-sm-12">
                     <%= f.text_field :name, class: "form-control", placeholder: "Enter Name", autofocus: true %>
                  </div>
-            </div>
+            </div><br>
             <div class="form-group">
                 <div class="control-label col-sm-4">     
                     <%= f.label :password %>
@@ -25,4 +29,7 @@
             </div>
         <% end %>
     </div>
+</div> 
+    </p>
+  </div>
 </div>
