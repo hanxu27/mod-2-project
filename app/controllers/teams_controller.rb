@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  load_and_authorize_resource param_method: :s_params
   def new
     @team = Team.new
   end

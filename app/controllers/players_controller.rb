@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  load_and_authorize_resource param_method: [:s_params, :strong_params]
+
   def new
     @player = Player.new
   end

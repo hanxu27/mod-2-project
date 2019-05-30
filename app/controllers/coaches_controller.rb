@@ -1,4 +1,6 @@
 class CoachesController < ApplicationController
+  load_and_authorize_resource param_method: [:c_params, :strong_params, :u_params]
+
   def show
     @age_groups = Team.all.map{ |t| t.age_group }
     @coach = Coach.find(params[:id])

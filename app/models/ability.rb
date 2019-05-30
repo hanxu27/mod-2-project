@@ -5,19 +5,29 @@ class Ability
 
   def initialize(user)
     can :read, Team, public: true
-
-    if player.present?
-      can :manage, Player, player_id: player.id
-      can [:create, :destroy], Tryout, player_id: player.id
-
+    if user.class == Player
+      can :read, Team
+      can :manage, Player, id: user.id
+      cannot :index, Player
+      can [:create, :destroy], Tryout, id: user.id
+    end
+    if user.class == Coach
+      can :read, Team
+      can [:edit, :show, :index], Coach, id: user.id
+      can :manage, Tryout
+      can :manage, Evaluation
+      if user.admin?
+        can :manage, :all
+      end
+    end
     # Define abilities for the passed in user here. For example:
     #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
+      # user ||= User.new # guest user (not logged in)
+      # if user.admin?
+      #   can :manage, :all
+      # else
+      #   can :read, :all
+      # end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

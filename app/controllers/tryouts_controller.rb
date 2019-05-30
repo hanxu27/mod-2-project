@@ -1,4 +1,6 @@
 class TryoutsController < ApplicationController
+  load_and_authorize_resource param_method: [:create_params, :update_params]
+
   def new
     @tryout = Tryout.new
   end
