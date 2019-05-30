@@ -1,5 +1,7 @@
 class CoachesController < ApplicationController
   load_and_authorize_resource param_method: [:c_params, :strong_params, :u_params]
+  # skip_load_resource only: [:view_results]
+  skip_authorize_resource only: [:view_results]
 
   def show
     @age_groups = Team.all.map{ |t| t.age_group }

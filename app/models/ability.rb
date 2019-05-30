@@ -11,13 +11,12 @@ class Ability
       cannot :index, Player
       can :manage, Tryout, player_id: user.id
       cannot :index, Tryout
-      can :create, Tryout
-      can :new, Tryout
     end
     if user.class == Coach
       can :read, Team
       can [:edit, :show, :index], Coach, id: user.id
       can :manage, Tryout
+      cannot :destroy, Tryout
       can :manage, Evaluation
       if user.admin?
         can :manage, :all
