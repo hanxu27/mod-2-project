@@ -5,10 +5,18 @@
     <% end %>
   </ul>
 <% end %>
-<%= form_for @team do |f| %>
-  <%= f.label "Age Group: "%>
-  <%= f.text_field :age_group %>
-  <%= f.label "Team Name: " %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+
+<div class="card border-primary mx-auto mb-3" style="max-width: 20rem;">
+    <div class="card-body">
+      <p class="card-text mx-auto">
+        <%= form_for @team do |f| %>
+          <%= f.label "Age Group: "%>
+          <%= f.text_field :age_group %><br><br>
+          <%= f.label "Team Name: " %>
+          <%= f.text_field :name %><br><br>
+          <button type="submit" class="btn btn-outline-danger">Submit</button>
+          <a class="btn btn-outline-warning" href="<%=team_path(@team)%>" role="button">Back</a>
+        <% end %>
+      </p>
+    </div>
+</div>

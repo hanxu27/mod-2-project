@@ -1,35 +1,44 @@
-<h1><%= "#{@team.age_group}: #{@team.name}"%></h1>
-<%= link_to 'Edit', edit_team_path(@team) %> <br>
-
-<%= form_tag team_path(@team), {method: 'patch'} do %>
+  <div class="card border-danger mx-auto mb-3" style="max-width: 30rem;">
+  <div class="card-header mx-auto"><h4><strong><%= "#{@team.age_group}: #{@team.name}"%></strong></h4></div>
+  <div class="card-body">
+    <p class="card-text">
+    <%= form_tag team_path(@team), {method: 'patch'} do %>
 <%= collection_select(:coach, :id, Coach.all, :id, :name, prompt: true)%>
-<%= submit_tag "Add Coach" %>
+<button type="submit" class="btn btn-outline-success">Add Coach</button>
 <% end %>
-
+<br>
 <%= form_tag team_path(@team), {method: 'patch'} do %>
 <%= collection_select(:tryout, :id, Tryout.all.select{ |t| t.age_group == @team.age_group }, :id, :id, prompt: true)%>
-<%= submit_tag "Add Player" %>
-<% end %>
-<h3>Coaches:</h3>
+<button type="submit" class="btn btn-outline-success">Add Player</button>
+<% end %><br><hr><br>
+<h5><strong>Coaches:</strong></h5>
   <ul>
     <% @team.coaches.each do |c| %>
       <li><%= c.name %> 
         <%= form_tag team_remove_path, {method: 'patch'} do %>
         <%= hidden_field_tag("coach_id", "#{c.id}") %>
-        <%= submit_tag "Remove" %>
+        <button type="submit" class="btn btn-outline-danger">Remove</button>
         <% end %> 
       </li>
     <% end %>
-  </ul>
-<h3>Players:</h3>
+  </ul><br><hr><br>
+<h5><strong>Players:</strong></h5>
   <ul>
     <% @team.players.each do |p| %>
       <li><%= p.name %> </li>
         <%= form_tag team_remove_path, {method: 'patch'} do %>
         <%= hidden_field_tag("player_id", "#{p.id}") %>
-        <%= submit_tag "Remove" %>
+        <button type="submit" class="btn btn-outline-danger">Remove</button>
         <% end %> 
     <% end %>
   </ul>
+    </p><br>
+    <p>
+    <a class="btn btn-outline-info" href="<%=edit_team_path%>" role="button">Edit Team</a>
+    <a class="btn btn-outline-warning" href="<%=teams_path%>" role="button">Back</a>
+    </p>
+  </div>
+      
 
-  <%= link_to 'All Teams', teams_path %>
+
+</div>
