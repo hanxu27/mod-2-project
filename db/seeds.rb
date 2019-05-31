@@ -5,11 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Team.destroy_all
-Player.destroy_all
-Coach.destroy_all
-Tryout.destroy_all
 Evaluation.destroy_all
+Tryout.destroy_all
+Coach.destroy_all
+Player.destroy_all
+Team.destroy_all
 
 # create 50 players
 50.times do 
@@ -71,7 +71,8 @@ Player.all.each do |p|
   tryout['dash'] = rand(3.2..7.5).round(2)
   tryout[:player_id] = p.id
   tryout[:age_group] = rand(14..17)
-  Tryout.create(tryout)
+  t = Tryout.create(tryout)
+  t.set_number
 end
 #create another 20 players not going to tryout
 20.times do 

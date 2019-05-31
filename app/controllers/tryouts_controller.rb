@@ -9,6 +9,7 @@ class TryoutsController < ApplicationController
   def create
     @tryout = Tryout.new(create_params)
     if @tryout.save
+      @tryout.set_number
       redirect_to player_path(@tryout.player)
     else
       render :new
