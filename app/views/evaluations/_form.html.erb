@@ -5,33 +5,42 @@
     <% end %>
   </ul>
 <% end %>
-<h3><%= link_to('Cancel Evaluation', coach_evaluation_path(@evaluation), method: :delete, data: {confirm: "Are you sure?"}) %></h3>
-<%= form_for @evaluation, url: coach_evaluation_path do |f| %>
-  <h3><%= f.label "Individual Skills" %></h3>
-  <%= f.label "Passing: " %>
-  <%= f.collection_radio_buttons :passing, *[1..10], :itself , :itself  %> <br>
-  <%= f.label "Serving: " %>
-  <%= f.collection_radio_buttons :serve, *[1..10], :itself, :itself  %> <br>
-  <%= f.label "Hitting: " %>
-  <%= f.collection_radio_buttons :hitting, *[1..10], :itself, :itself  %> <br>
-  <%= f.label "Setting: " %>
-  <%= f.collection_radio_buttons :setting, *[1..10], :itself, :itself  %> <br>
-  <%= f.label "Serve Receive: " %>
-  <%= f.collection_radio_buttons :sr, *[1..10], :itself, :itself  %> <br>
-  <h3><%= f.label "Court Skills" %></h3>
-  <%= f.label "Communication: " %>
-  <%= f.collection_radio_buttons :communication, *[1..10], :itself, :itself  %> <br>
-  <%= f.label "Coachability: " %>
-  <%= f.collection_radio_buttons :coachability, *[1..10], :itself, :itself  %> <br>
-  <%= f.label "Athleticism: " %>
-  <%= f.collection_radio_buttons :athleticism, *[1..10], :itself, :itself  %> <br>
-  <%= f.label "Volleyball IQ: " %>
-  <%= f.collection_radio_buttons :vball_iq, *[1..10], :itself, :itself  %> <br>
-  <h3><%= f.label "Suggested Team:"%></h3>
-  <%= f.collection_radio_buttons :team, @teams, :id, :name %> <br>
-  <h3><%= f.label "Comments" %></h3>
-  <%= f.text_area :comments %> <br>
-  <%= f.label "Save for review?"%>
-  <%= f.check_box "flag", {}, "yes" %> <br>
-  <%= f.submit "Save Evaluation"  %>
-<% end %>
+<h4 align="center"><em><%= link_to('Cancel Evaluation', coach_evaluation_path(@evaluation), method: :delete, data: {confirm: "Are you sure?"}) %></em></h4>
+<div class="card border-primary mx-auto mb-3" style="max-width: 35rem;">
+  <div class="card-body">  
+    <p class="card-text">
+      <%= form_for @evaluation, url: coach_evaluation_path do |f| %>
+        <h3><%= f.label "Individual Skills" %></h3>
+        <%= f.label "Passing: " %>
+        <%= f.collection_radio_buttons :passing, *[1..10], :itself , :itself  %> <br>
+        <%= f.label "Serving: " %>
+        <%= f.collection_radio_buttons :serve, *[1..10], :itself, :itself  %> <br>
+        <%= f.label "Hitting: " %>
+        <%= f.collection_radio_buttons :hitting, *[1..10], :itself, :itself  %> <br>
+        <%= f.label "Setting: " %>
+        <%= f.collection_radio_buttons :setting, *[1..10], :itself, :itself  %> <br>
+        <%= f.label "Serve Receive: " %>
+        <%= f.collection_radio_buttons :sr, *[1..10], :itself, :itself  %> <br>
+        <hr><h3><%= f.label "Court Skills" %></h3>
+        <%= f.label "Communication: " %>
+        <%= f.collection_radio_buttons :communication, *[1..10], :itself, :itself  %> <br>
+        <%= f.label "Coachability: " %>
+        <%= f.collection_radio_buttons :coachability, *[1..10], :itself, :itself  %> <br>
+        <%= f.label "Athleticism: " %>
+        <%= f.collection_radio_buttons :athleticism, *[1..10], :itself, :itself  %> <br>
+        <%= f.label "Volleyball IQ: " %>
+        <%= f.collection_radio_buttons :vball_iq, *[1..10], :itself, :itself  %> <br>
+        <hr><h3><%= f.label "Suggested Team:"%></h3>
+        <%= f.collection_radio_buttons :team, @teams, :id, :name %> <br>
+        <hr><h3><%= f.label "Comments" %></h3>
+        <%= f.text_area :comments %> <br>
+        <%= f.label "Save for review?"%>
+        <%= f.check_box "flag", {}, "yes" %> <br>
+        <button type="submit" class="btn btn-outline-success btn-sm">Save Evaluation</button>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+
+

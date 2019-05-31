@@ -1,6 +1,12 @@
-<h1>All Tryouts</h1>
-<ul>
-  <% @tryouts.each do |t| %>
-    <li><%= link_to "#{t.season} #{t.player.name}", tryout_path(t) %> </li>
-  <% end %>
-</ul>
+
+
+<div class="card border-warning mb-3 mx-auto" style="max-width: 30rem;">
+  <div class="card-header mx-auto">All Tryouts</div>
+  <div class="card-body">
+    <p class="card-text">
+     <% @tryouts.each do |t| %>
+      <li><%= link_to "#{t.season} #{t.player.name}", tryout_path(t) %> </li>
+    <% end %>
+    </p>
+  </div>
+</div>

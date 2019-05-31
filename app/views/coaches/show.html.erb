@@ -4,18 +4,21 @@
   </div>
   <div class="card-body">
     <p class="card-text">
-<p><div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <%= link_to 'All Tryout Players', tryouts_path %>
-  <%= link_to 'All Registered Player', players_path %>
+<p><div class="btn-group btn-sm" role="group" aria-label="Button group with nested dropdown">
+  <div class="btn-group btn-sm">
+  <a class="btn btn-outline-success btn-sm" href="<%=tryouts_path%>" role="button">All Tryout Players</a>
+  <a class="btn btn-outline-info btn-sm" href="<%=players_path%>" role="button">All Registered Payers</a>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+</div>
  <button type="button" class="btn btn-outline-dark btn-sm">Evaluation</button>
   <div class="btn-group" role="group">
-    <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+    <button id="btnGroupDrop3" type="button" class="btn btn-outline-dark dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop3">
       <a class="dropdown-item" href="<%=new_coach_evaluation_path(@coach)%>">Make Evaluation</a>
       <a class="dropdown-item" href="<%=coach_evaluations_path(@coach)%>">My Evaluations</a>
     </div>
   </div></p>
-</div></p>
+</div></p><hr>
 
 <div class="btn-group" role="group" aria-label="Basic example">
 <%= form_tag add_group_coach_path(@coach), method: "post"  do %>

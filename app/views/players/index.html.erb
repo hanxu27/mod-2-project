@@ -1,6 +1,11 @@
-<h1>All Registered Players:</h1>
-<ul>
-  <% @players.each do |p| %>
-    <li><%= link_to p.name, player_path(p) %> </li>
-  <% end %>
-</ul>
+
+<div class="card border-dark mb-3 mx-auto" style="max-width: 30rem;">
+  <div class="card-header mx-auto"><strong>All Registered Players</strong></div>
+  <div class="card-body">
+    <p class="card-text">
+      <% @players.each do |p| %>
+        <li><%= link_to p.name, player_path(p) %> </li>
+      <% end %>
+    </p>
+  </div>
+</div>

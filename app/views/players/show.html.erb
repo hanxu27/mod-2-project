@@ -14,7 +14,7 @@
     <li>Secondary Position: <%= @player.position_2 %> </li>
     </p><br><br><br><br>
     <%= form_tag edit_player_path, method: :get do%>
-    <p><button type="submit"  class="btn btn-warning btn-sm btn-block">Update Information</button>
+    <p><button type="submit"  class="btn btn-outline-warning btn-sm btn-block">Update Information</button>
     </p>
     <%end%>
   </div>
@@ -56,7 +56,7 @@
     <%= hidden_field_tag 'tryout[player_id]', @player.id%><br><br>
     <footer>
     <% if @player.parent_number %>
-      <button type="submit" class="btn btn-primary btn-sm btn-block">Sign up for tryout</button>
+      <button type="submit" class="btn btn-outline-primary btn-sm btn-block">Sign up for tryout</button>
     <% else %>
       <p class="card-text">Must complete profile before signing up for tryout</p>
     <% end %>  

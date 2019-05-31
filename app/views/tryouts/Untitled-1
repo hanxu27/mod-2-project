@@ -1,14 +1,27 @@
-<% if @team.errors %>
-  <ul>
-    <% @team.errors.full_messages.each do |m| %>
-      <li style="color: red;"><%= m %> </li>
-    <% end %>
-  </ul>
-<% end %>
-<%= form_for @team do |f| %>
-  <%= f.label "Age Group: "%>
-  <%= f.text_field :age_group %>
-  <%= f.label "Team Name: " %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Apple</button>
+  <button type="button" class="btn btn-primary">Samsung</button>
+  <button type="button" class="btn btn-primary">Sony</button>
+</div>
+
+<%= link_to 'All Tryout Players', tryouts_path %>
+  <%= link_to 'All Registered Player', players_path %>
+
+
+
+  <div class="card border-dark mx-auto mb-3" style="max-width: 20rem;">
+  <div class="card-header"><h4 align="center"><strong>Header</strong></h4></div>
+  <div class="card-body">  
+    <p class="card-text">
+
+    </p>
+  </div>
+</div>
+
+
+    <a class="btn btn-success" href="<%=new_player_path%>" role="button">Join Now</a>
+
+&nbsp
+
+
+align="center"
