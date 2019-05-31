@@ -7,13 +7,13 @@
 
 <% if can? :edit, @team %>
   <%= form_tag team_path(@team), {method: 'patch'} do %>
-  <%= collection_select(:coach, :id, Coach.all, :id, :name, prompt: true)%>
-  <button type="submit" class="btn btn-outline-success">Add Coach</button>
+  <%= collection_select(:coach, :id, Coach.all, :id, :name, {prompt: true}, {required: true})%>
+  <%= submit_tag "Add Coach", class: "btn btn-outline-success" %>
   <% end %>
   <br>
   <%= form_tag team_path(@team), {method: 'patch'} do %>
-  <%= collection_select(:player, :id, @players, :id, :name, prompt: true)%>
-  <button type="submit" class="btn btn-outline-success">Add Player</button>
+  <%= collection_select(:player, :id, @players, :id, :name, {prompt: true}, {required: true})%>
+  <%= submit_tag "Add Player", class: "btn btn-outline-success" %>
   <% end %><br><hr><br>
 <% end %>
 

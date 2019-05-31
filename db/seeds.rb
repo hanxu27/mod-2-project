@@ -144,7 +144,8 @@ end
   eval[:communication] = rand(1..10)
   eval[:vball_iq] = rand(1..10)
   eval[:passing] = rand(1..10)
-  eval[:team] = rand(1..5).to_s
+  # teams are no longer 1-5
+  # eval[:team] = rand(1..5).to_s
   eval[:comments] = Faker::Movies::StarWars.quote
   eval[:tryout_id] = Tryout.all.sample.id
   eval[:coach_id] = Coach.all.sample.id

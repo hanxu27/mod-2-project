@@ -37,7 +37,6 @@ class TeamsController < ApplicationController
       player = Player.find(params[:player][:id])
       player.update(team_id: params[:id])
     end
-    binding.pry
       redirect_to team_path(@team)
   end
 

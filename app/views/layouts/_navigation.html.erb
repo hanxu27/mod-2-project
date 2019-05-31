@@ -38,7 +38,7 @@
       <% end %>
         
       <% if session[:coach_id] %>
-        <% if can? :edit, Coach %>
+        <% if can? :create, Coach %>
           <%= link_to 'Manage Coaches', coaches_path, class: "nav-link" %>
         <% else %>
           <%= link_to 'Coaches', coaches_path, class: "nav-link" %>
