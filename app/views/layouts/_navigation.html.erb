@@ -25,7 +25,12 @@
       </li>
 
       <li class="nav-item">
-        <%= link_to 'Teams', teams_path, class: "nav-link" %>
+        <% if can? :edit, Team %>
+          <%= link_to 'Manage Teams', teams_path, class: "nav-link" %>
+        <% else %>
+          <%= link_to 'Teams', teams_path, class: "nav-link" %>
+        <% end %>
+        
       </li>
 
       <% unless session[:player_id] %>
@@ -33,7 +38,11 @@
       <% end %>
         
       <% if session[:coach_id] %>
-        <%= link_to 'Coaches', coaches_path, class: "nav-link" %>
+        <% if can? :edit, Coach %>
+          <%= link_to 'Manage Coaches', coaches_path, class: "nav-link" %>
+        <% else %>
+          <%= link_to 'Coaches', coaches_path, class: "nav-link" %>
+        <% end %>
       <% end %>
 
       <% if session[:player_id] || session[:coach_id] %>

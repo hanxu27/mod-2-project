@@ -32,7 +32,7 @@
 
  <hr>
 <%= form_tag coach_path(@coach), method: "get" do %>
-  <%= text_field_tag 'player' %>
+  <%= text_field_tag 'player', nil ,required: true %> 
   <button type="submit" class="btn btn-outline-primary btn-sm">Search For Player</button>
 <% end %><br>
 
@@ -43,7 +43,7 @@
   <% end %><br>
 <% end %>
 
-<% if @tryouts %>
+<% if @tryouts.present? %>
   <p><strong>Search Result:</strong></p>
   <% @tryouts.each do |t| %>
     <%= link_to "#{t.id}: #{t.player.name}", tryout_path(t) %> 
@@ -52,7 +52,9 @@
     <button type="submit" class="btn btn-success btn-sm">Flag Player</button>
     <% end %>
     <br>
-  <% end %>
+    <% end %>
+<% elsif @error.present? %>
+    <p><strong><%= @error%></strong></p>
 <% end %>
 
 <hr>

@@ -5,4 +5,4 @@
     <li><%= link_to "#{e.total_score} from #{e.coach.name}", coach_evaluation_path(e.coach, e) %></li> <br>
   <% end %>
 </ul>
-<%= link_to "Back to Age Group", :back %>
+<%= link_to "Back to My Evaluations", coach_evaluations_path(session[:coach_id]), method: 'get' %>

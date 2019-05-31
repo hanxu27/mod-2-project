@@ -20,6 +20,7 @@ class Ability
       can [:edit, :show, :index], Coach, id: user.id
       can :manage, Tryout
       cannot :destroy, Tryout
+      can :read, Evaluation
       can :manage, Evaluation, coach_id: user.id
       if user.admin?
         can :manage, :all
