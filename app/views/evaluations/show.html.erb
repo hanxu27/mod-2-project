@@ -7,7 +7,11 @@
 <h4>Total Score: <%= @eval.total_score %></h4>
 <h4>Skill Score: <%= @eval.skill_score %> </h4>
 <h4>Soft Skills Score: <%= @eval.soft_score %> </h4>
-<h4>Recommended team: <%= Team.find(@eval.team).name %></h4>
+<h4>Recommended team: <% if @eval.team.present? %>
+                          <%= Team.find(@eval.team).name %>
+                          <% else %>
+                          <%= "" %>
+                          <% end %></h4>
 <h4>Comments: <p><%= @eval.comments %></p> </h4>
 <h4>Specific Scores:</h4>
 <ul>

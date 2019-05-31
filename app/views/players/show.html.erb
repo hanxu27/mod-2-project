@@ -55,7 +55,11 @@
     <%= form_tag new_tryout_path, method: :get do%>
     <%= hidden_field_tag 'tryout[player_id]', @player.id%><br><br>
     <footer>
-    <button type="submit" class="btn btn-primary btn-sm btn-block">Sign up for tryout</button>
+    <% if @player.parent_number %>
+      <button type="submit" class="btn btn-primary btn-sm btn-block">Sign up for tryout</button>
+    <% else %>
+      <p class="card-text">Must complete profile before signing up for tryout</p>
+    <% end %>  
     </footer>
     <%end%>
     

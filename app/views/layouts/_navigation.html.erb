@@ -6,30 +6,34 @@
 
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
+      <% unless session[:player_id] || session[:coach_id] %>
+      <li class="nav-item">
+        <a class="nav-link" href=<%=new_player_path%>>Sign Up</a>
+      </li>
+      <% end %>
+
       <% if session[:coach_id] %>
-        <%= link_to 'My Home', coach_path(session[:coach_id]), class: "nav-link" %>
+        <%= link_to 'Coach Home', coach_path(session[:coach_id]), class: "nav-link" %>
       <% end %>
 
       <% if session[:player_id] %>
-        <%= link_to 'My Home', coach_path(session[:player_id]), class: "nav-link" %>
+        <%= link_to 'Player Home', player_path(session[:player_id]), class: "nav-link" %>
       <% end %>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <%= link_to 'About', about_path, class: "nav-link" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Teams', teams_path, class: "nav-link" %>
       </li>
 
       <% unless session[:player_id] %>
       <li class="nav-item ">
+      <% end %>
         
       <% if session[:coach_id] %>
         <%= link_to 'Coaches', coaches_path, class: "nav-link" %>
-      <% end %>
-
-      <% unless session[:player_id] || session[:coach_id] %>
-      <li class="nav-item">
-
-        <a class="nav-link" href=<%=new_player_path%>>Sign Up</a>
-      </li>
       <% end %>
 
       <% if session[:player_id] || session[:coach_id] %>
@@ -42,11 +46,11 @@
             Log In
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href=<%=loginC_path%>>Coach</a>
             <a class="dropdown-item" href=<%=login_path%>>Player</a>
+            <a class="dropdown-item" href=<%=loginC_path%>>Coach</a>
           </div>
         </li>
       <% end %>
-  </ul>
+    </ul>
   </div>
 </nav>

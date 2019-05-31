@@ -5,6 +5,8 @@
   <div class="card-body">
     <p class="card-text">
 <p><div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  <%= link_to 'All Tryout Players', tryouts_path %>
+  <%= link_to 'All Registered Player', players_path %>
  <button type="button" class="btn btn-outline-dark btn-sm">Evaluation</button>
   <div class="btn-group" role="group">
     <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
@@ -15,19 +17,18 @@
   </div></p>
 </div></p>
 
-<%= form_tag add_group_coach_path(@coach), method: "post" do %>
+<div class="btn-group" role="group" aria-label="Basic example">
+<%= form_tag add_group_coach_path(@coach), method: "post"  do %>
   <%= collection_select(nil, :age_group, Team.all.map{|t| t.age_group}.uniq, :itself, :itself, {prompt: "Age Group"} ) %>
-  <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="submit" class="btn btn-success btn-sm">Flag Entire Age Group</button>
-  <button type="submit" class="btn btn-warning btn-sm">Unflag All</button>
-  <%= form_tag coach_evaluations_path(@coach), method: "delete" do %>
-  <%= hidden_field_tag :incomplete, "delete" %>
-  <button type="submit" class="btn btn-danger btn-sm">Delete Incomplete</button>
+  <%= submit_tag "Flag Entire Age Group", class: "btn btn-success btn-sm" %>
 <% end %>
-  
-  </div>
-<% end %>
+<%= link_to 'Unflag All', unflag_coach_path, method: "post", class: "btn btn-warning btn-sm" %>
 
+<%= form_tag coach_evaluations_path(@coach), method: "delete" do %>
+  <%= hidden_field_tag :incomplete, "delete" %>
+  <%= submit_tag "Delete Incomplete" , class: "btn btn-danger btn-sm" %>
+<% end %>
+</div>
 
  <hr>
 <%= form_tag coach_path(@coach), method: "get" do %>

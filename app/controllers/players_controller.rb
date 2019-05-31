@@ -1,14 +1,15 @@
 class PlayersController < ApplicationController
   load_and_authorize_resource param_method: [:s_params, :strong_params]
+  skip_load_resource only: :create
 
   def new
     @player = Player.new
   end
 
   def create
-    
     @player = Player.new(s_params)
     if @player.save
+      session[:player_id] = @player.id
       redirect_to edit_player_path(@player)
     else
       render :new

@@ -5,19 +5,22 @@ class Ability
 
   def initialize(user)
     can :read, Team
+    can :create, Player
     if user.class == Player
       can :read, Team
       can :manage, Player, id: user.id
       cannot :index, Player
       can :manage, Tryout, player_id: user.id
+      cannot :edit, Tryout
       cannot :index, Tryout
     end
     if user.class == Coach
+      can :read, Player
       can :read, Team
       can [:edit, :show, :index], Coach, id: user.id
       can :manage, Tryout
       cannot :destroy, Tryout
-      can :manage, Evaluation
+      can :manage, Evaluation, coach_id: user.id
       if user.admin?
         can :manage, :all
       end

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     player = Player.find_by(name: params[:session][:name].titleize)
     if player && player.authenticate(params[:session][:password])
       session[:player_id] = player.id
-      flash[:success] = "You have successfully logged in"
+      # flash[:success] = "You have successfully logged in"
       redirect_to player_path(player)
     else
       flash.now[:danger] = "There was something wrong with your login information"
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     coach = Coach.find_by(name: params[:session][:name].titleize)
     if coach && coach.authenticate(params[:session][:password])
       session[:coach_id] = coach.id
-      flash[:success] = "You have successfully logged in"
+      # flash[:success] = "You have successfully logged in"
       redirect_to coach_path(coach)
     else
       flash.now[:danger] = "There was something wrong with your login information"
