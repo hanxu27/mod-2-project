@@ -1,6 +1,9 @@
 <div class="card text-white bg-warning mb-3 mx-auto" style="max-width: 35rem;">
   <div class="card-header"><h4 align="center"><em><strong>Team List</strong></em></h4></div>
   <div class="card-body">
+    <% if can? :edit, Team %>
+      <%= link_to 'Add Team', new_team_path %>
+    <% end %>
     <p class="card-text">
     <% @teams.each do |t| %>
       <li><h7><%= link_to "#{t.age_group}: #{t.name}", team_path(t) %></h7></li>

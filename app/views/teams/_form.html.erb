@@ -14,8 +14,7 @@
           <%= f.text_field :age_group %><br><br>
           <%= f.label "Team Name: " %>
           <%= f.text_field :name %><br><br>
-          <button type="submit" class="btn btn-outline-danger">Submit</button>
-          <a class="btn btn-outline-warning" href="<%=team_path(@team)%>" role="button">Back</a>
+          <%= f.submit "Create Team", class: "btn btn-outline-danger" %>
         <% end %>
       </p>
     </div>
