@@ -10,6 +10,7 @@ class Tryout < ApplicationRecord
   validates :block_jump, numericality: true, on: :update
   validates :point_touch, numericality: true, on: :update
   validates :dash, numericality: true, on: :update
+  validates :number, uniqueness: true
 
   def skill_score
     score = 0
@@ -36,5 +37,21 @@ class Tryout < ApplicationRecord
 
   def total_score
     skill_score + soft_score
+  end
+
+  def next
+    Tryout.all.where("id > ?", id).first
+  end
+
+  def prev
+    Tryout.all.where("id < ?", id).last
+  end
+
+  def set_number
+    if self.prev
+      self.update(number: self.prev.number + 1)
+    else
+      self.update(number: 1)
+    end
   end
 end

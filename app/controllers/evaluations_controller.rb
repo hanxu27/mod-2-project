@@ -8,10 +8,12 @@ class EvaluationsController < ApplicationController
   end
 
   def create
+    # find tryout_id from tryout.number
+    @tryout = Tryout.find_by(number: params[:evaluation][:tryout_id])
     # check for previous evaluations between the coach and player
-    @evaluation = Evaluation.find_by(tryout_id: params[:evaluation][:tryout_id], coach_id: params[:coach_id])
+    @evaluation = Evaluation.find_by(tryout_id: @tryout.id, coach_id: params[:coach_id])
     if !@evaluation.present?
-      @evaluation = Evaluation.new(tryout_id: params[:evaluation][:tryout_id], coach_id: params[:coach_id])
+      @evaluation = Evaluation.new(tryout_id: @tryout.id, coach_id: params[:coach_id])
       if !@evaluation.save
         render :new
       end

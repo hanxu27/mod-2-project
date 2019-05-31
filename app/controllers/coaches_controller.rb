@@ -11,8 +11,6 @@ class CoachesController < ApplicationController
     @incomplete_evals = @evals.select{ |e| e.total_score == "incomplete" && e.flag == false }
     @completed_evals = @evals.select{ |e| e.total_score != "incomplete" && e.flag == false }
 
-
-
     # look for exact match first then look for name containing the query params[:player]
     if params[:player].to_i == 0 && params[:player]
 
@@ -26,9 +24,9 @@ class CoachesController < ApplicationController
       end
     end
     if params[:player].to_i != 0
-      begin
-        @tryouts = [Tryout.find(params[:player])]
-      rescue => exception
+      if Tryout.find_by(number: params[:player])
+        @tryouts = [Tryout.find_by(number: params[:player])]
+      else
         @tryouts = nil
         @error = "Player not found"
       end
