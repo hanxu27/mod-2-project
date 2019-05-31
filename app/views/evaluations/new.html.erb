@@ -2,6 +2,6 @@
 
 <%= form_for [@coach, @evaluation] do |f| %>
   <%= f.label "Enter Player Number:"%>
-  <%= f.text_field :tryout_id %>
+  <%= f.text_field :tryout_id, required: true %>
   <%= f.submit "Evaluate Player"%>
 <% end %>

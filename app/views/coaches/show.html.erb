@@ -43,16 +43,16 @@
   <% end %><br>
 <% end %>
 
-<% if @tryouts.present? %>
-  <p><strong>Search Result:</strong></p>
-  <% @tryouts.each do |t| %>
-    <%= link_to "#{t.id}: #{t.player.name}", tryout_path(t) %> 
-    <%= form_tag  coach_path(@coach), method: "get" do %>
-    <%= hidden_field_tag :flag, t.player_id %>
-    <button type="submit" class="btn btn-success btn-sm">Flag Player</button>
-    <% end %>
-    <br>
-    <% end %>
+<p><strong>Search Result:</strong></p>
+  <% if @tryouts.present? %>
+    <% @tryouts.each do |t| %>
+      <%= link_to "#{t.id}: #{t.player.name}", tryout_path(t) %> 
+      <%= form_tag coach_path(@coach), method: "get" do %>
+      <%= hidden_field_tag :flag, t.player_id %>
+      <button type="submit" class="btn btn-success btn-sm">Flag Player</button>
+      <% end %>
+      <br>
+      <% end %>
 <% elsif @error.present? %>
     <p><strong><%= @error%></strong></p>
 <% end %>

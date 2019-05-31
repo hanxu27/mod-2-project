@@ -52,7 +52,7 @@
     <% @tryouts.each do |t| %>
     <li><%= link_to t.season, tryout_path(t) %> </li>
     <% end %>
-    <%= form_tag new_tryout_path, method: :get do%>
+    <%= form_tag new_tryout_path, method: :get do %>
     <%= hidden_field_tag 'tryout[player_id]', @player.id%><br><br>
     <footer>
     <% if @player.parent_number %>

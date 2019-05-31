@@ -10,6 +10,7 @@ class Tryout < ApplicationRecord
   validates :block_jump, numericality: true, on: :update
   validates :point_touch, numericality: true, on: :update
   validates :dash, numericality: true, on: :update
+  validates :number, uniqueness: true
 
   def skill_score
     score = 0
