@@ -5,7 +5,7 @@ class Player < ApplicationRecord
   has_secure_password
   
   validates :name, format: { with: /\A[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*\z/, message: "format error" }, uniqueness: true, on: :create
-  validates :password, length: { within: 0..40 }, on: :create
+  validates :password, length: { within: 6..40 }, on: :create
   validates :birthday, format: { with: /\d{4}\D\d{2}\D\d{2}/, message: "invalid" }, on: :update
   validate :validate_birthday, on: :update
   validates :height, numericality: { between: 120..220 }, on: :update

@@ -16,6 +16,8 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @tryouts = Tryout.all.select { |t| t.age_group == @team.age_group }
+    @players = @tryouts.map { |t| t.player }
   end
 
   def index
@@ -29,19 +31,14 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     if params[:coach]
-      Coach.find(params[:coach][:id]).update(team_id: params[:id])
-      return redirect_to team_path(params[:id])
-    end
-    if params[:player]
+      coach = Coach.find(params[:coach][:id])
+      coach.update(team_id: params[:id])
+    elsif params[:player]
       player = Player.find(params[:player][:id])
       player.update(team_id: params[:id])
-      return redirect_to team_path(params[:id])
     end
-    if @team.update(s_params)
+    binding.pry
       redirect_to team_path(@team)
-    else
-      render :new
-    end
   end
 
   def destroy
