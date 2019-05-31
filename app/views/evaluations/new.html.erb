@@ -1,7 +1,13 @@
-<h1>Start Evaluation</h1>
 
-<%= form_for [@coach, @evaluation] do |f| %>
-  <%= f.label "Enter Player Number:"%>
-  <%= f.text_field :tryout_id %>
-  <%= f.submit "Evaluate Player"%>
-<% end %>
+<div class="card border-dark mx-auto mb-3" style="max-width: 30rem;">
+  <div class="card-header mx-auto"><strong>New Evaluation</strong></div>
+  <div class="card-body">
+    <p class="card-text">
+    <%= form_for [@coach, @evaluation] do |f| %>
+      <%= f.label "Enter Player Number:"%>
+      <%= f.text_field :tryout_id %>
+      <button type="submit" class="btn btn-outline-success btn-sm">Evaluate Payer</button>
+    <% end %>
+    </p>
+  </div>
+</div>

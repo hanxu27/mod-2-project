@@ -1,10 +1,10 @@
 
   <div class="card border-danger mx-auto mb-3" style="max-width: 30rem;">
-  <div class="card-header mx-auto"><h4><strong><%= "#{@team.age_group}: #{@team.name}"%></strong></h4></div>
+  <div class="card-header"><h4 align="center"><strong><%= "#{@team.age_group}: #{@team.name}"%></strong></h4></div>
   <div class="card-body">
     <p class="card-text">
 
-<h1><%= "#{@team.age_group}: #{@team.name}"%></h1> <br>
+
 <% if can? :edit, @team %>
   <%= form_tag team_path(@team), {method: 'patch'} do %>
   <%= collection_select(:coach, :id, Coach.all, :id, :name, prompt: true)%>
@@ -17,7 +17,7 @@
   <% end %><br><hr><br>
 <% end %>
 
-<h3>Coaches:</h3>
+<h4><strong>Coaches:</strong></h4>
   <ul>
     <% @team.coaches.each do |c| %>
       <li><%= c.name %> 
@@ -44,7 +44,9 @@
   </ul>
     </p><br>
     <p>
-    <%= link_to 'Edit Team Info', edit_team_path(@team), class: "btn btn-outline-info" %> 
+    <% if can? :edit, @team %>
+      <%= link_to 'Edit Team Info', edit_team_path(@team), class: "btn btn-outline-info" %> 
+    <% end %>
     <a class="btn btn-outline-info" href="<%=teams_path%>" role="button">Back</a>
     </p>
   </div>
